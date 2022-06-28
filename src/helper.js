@@ -49,20 +49,20 @@ let User = function (name, balance = 0) {
       return;
     }
   };
-
-  this.getBalance = (accountNum) => {
-    let account = bankData.find((x) => x.accountNum === accountNum);
-    console.log(account.balance);
-    return account.balance;
-  };
-
-  this.listUsers = () => {
-    console.log(bankData);
-    return bankData;
-  };
 };
 
 let addUser = (name, balance) => {
   let newUser = new User(name, balance);
   bankData.push(newUser);
+};
+
+let getBalance = (accountNum) => {
+  let account = bankData.find((x) => x.accountNum === accountNum);
+  console.log(account.balance);
+  return account.balance;
+};
+
+let listUsers = () => {
+  console.log(bankData);
+  return bankData;
 };
