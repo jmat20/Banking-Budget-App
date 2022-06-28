@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import HeaderComponent from "./components/header";
 
 function App() {
-  return <div className="App"></div>;
+  return <HeaderComponent />;
 }
 
 export default App;
