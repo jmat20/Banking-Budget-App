@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-import "./App.css";
 import LogInPage from "./login-form";
 
 function App() {
