@@ -4,6 +4,7 @@ import LogInForm from "./components/login-form";
 
 function App() {
   const adminUser = {
+    name: "admin",
     username: "admin",
     password: "placeholderpass",
   };
@@ -13,6 +14,15 @@ function App() {
 
   const Login = (details) => {
     console.log(details);
+
+    if (
+      details.username == adminUser.username &&
+      details.password == adminUser.password
+    ) {
+      console.log("admin logged in");
+    } else {
+      console.log("details do not match");
+    }
   };
 
   const Logout = () => {};
