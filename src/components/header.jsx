@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './header.css';
+import logo from '../assets/images/logo.svg';
+import "../assets/scss/header.css";
 
 let HeaderComponent = () => {
     return (
