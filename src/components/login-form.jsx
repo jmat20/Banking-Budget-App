@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function LogInPage() {
+function LogInForm() {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
 
@@ -26,4 +26,4 @@ function LogInPage() {
     )
 }
 
-export default LogInPage
+export default LogInForm

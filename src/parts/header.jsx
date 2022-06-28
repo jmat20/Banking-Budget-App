@@ -11,6 +11,7 @@ let HeaderComponent = () => {
             <div className='header-input'>
             <button type='button' className='header-button'>Log-Out</button>
             </div>
+            
         </div>
     )
 }
