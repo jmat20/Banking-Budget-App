@@ -8,16 +8,18 @@ function App() {
     password: "placeholderpass",
   };
 
-  const [user, setUser] = useState({ name: "", email: "" });
+  const [user, setUser] = useState({ name: "", username: "" });
   const [error, setError] = useState("");
 
-  const Login = (details) => {};
+  const Login = (details) => {
+    console.log(details);
+  };
 
   const Logout = () => {};
 
   return (
     <div className="app">
-      {user.email != "" ? (
+      {user.username != "" ? (
         <div className="welcome">
           <h2>
             Welcome, <span>{user.name}</span>
@@ -25,7 +27,7 @@ function App() {
           <button>Logout</button>
         </div>
       ) : (
-        <LogInForm />
+        <LogInForm Login={Login} error={error} />
       )}
 
       <HeaderComponent />
