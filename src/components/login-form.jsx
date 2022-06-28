@@ -21,6 +21,7 @@ function LogInPage() {
             <div>
                 <p>{name}</p>
                 <p>{password}</p>
+                <P></P>
             </div>
         </div>
     )
