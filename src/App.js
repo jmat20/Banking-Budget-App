@@ -16,8 +16,8 @@ function App() {
     console.log(details);
 
     if (
-      details.username == adminUser.username &&
-      details.password == adminUser.password
+      details.username === adminUser.username &&
+      details.password === adminUser.password
     ) {
       setUser({
         name: adminUser.name,
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="app">
-      {user.username != "" ? (
+      {user.username !== "" ? (
         // if (user.username != "") {
         // if (user.username = adminUser.username) {
         // banking app

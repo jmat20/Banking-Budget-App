@@ -47,7 +47,7 @@ function LogInForm({ Login, error }) {
 
         <input type="submit" value="log-in" />
 
-        {error != "" ? <div className="error">{error}</div> : ""}
+        {error !== "" ? <div className="error">{error}</div> : ""}
       </div>
     </form>
   );
