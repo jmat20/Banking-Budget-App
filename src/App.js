@@ -24,7 +24,7 @@ function App() {
         username: adminUser.username,
       });
     } else {
-      console.log("details do not match");
+      setError("Details do not match!");
     }
   };
 
@@ -43,6 +43,8 @@ function App() {
         // } else {
         // <LogInForm Login={Login} error={error} /> }
         // }
+
+        //BELOW IS JUST PLACEHOLDER FOR THE CODE ABOVE TO BE IMPLEMENTED//
         <div className="welcome">
           <h2>
             Welcome, <span>{user.name}</span>
