@@ -35,7 +35,6 @@ function App() {
 
   return (
     <div className="app">
-
       {user.username !== "" ? (
         // if (user.username != "") {
         // if (user.username = adminUser.username) {
@@ -57,6 +56,7 @@ function App() {
         <LogInForm Login={Login} error={error} />
       )}
       <HeaderComponent />
+      <Bank />
     </div>
   );
 }
