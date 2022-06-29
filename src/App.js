@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HeaderComponent from "./components/header";
 import LogInForm from "./components/login-form";
+import Bank from "./helper";
 
 function App() {
   const adminUser = {
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div className="app">
+      <HeaderComponent />
       {user.email != "" ? (
         <div className="welcome">
           <h2>
@@ -27,8 +29,7 @@ function App() {
       ) : (
         <LogInForm />
       )}
-
-      <HeaderComponent />
+      <Bank />
     </div>
   );
 }
