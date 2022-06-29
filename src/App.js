@@ -19,22 +19,35 @@ function App() {
       details.username == adminUser.username &&
       details.password == adminUser.password
     ) {
-      console.log("admin logged in");
+      setUser({
+        name: adminUser.name,
+        username: adminUser.username,
+      });
     } else {
       console.log("details do not match");
     }
   };
 
-  const Logout = () => {};
+  const Logout = () => {
+    setUser({ name: "", username: "" });
+  };
 
   return (
     <div className="app">
       {user.username != "" ? (
+        // if (user.username != "") {
+        // if (user.username = adminUser.username) {
+        // banking app
+        // } else if (user.username = array.includes(bankdata.username or something idk)) {
+        // budgeting app
+        // } else {
+        // <LogInForm Login={Login} error={error} /> }
+        // }
         <div className="welcome">
           <h2>
             Welcome, <span>{user.name}</span>
           </h2>
-          <button>Logout</button>
+          <button onClick={Logout}>Logout</button>
         </div>
       ) : (
         <LogInForm Login={Login} error={error} />

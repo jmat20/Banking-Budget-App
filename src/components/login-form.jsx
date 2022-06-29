@@ -22,6 +22,7 @@ function LogInForm({ Login, error }) {
           <label htmlFor="name">Username:</label>
           <input
             type="text"
+            autoComplete="off"
             name="username"
             id="username"
             onChange={(e) =>
