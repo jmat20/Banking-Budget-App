@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HeaderComponent from "./components/header";
 import LogInForm from "./components/login-form";
+import Bank from "./helper";
 
 function App() {
   const adminUser = {
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className="app">
+
       {user.username !== "" ? (
         // if (user.username != "") {
         // if (user.username = adminUser.username) {
@@ -54,7 +56,6 @@ function App() {
       ) : (
         <LogInForm Login={Login} error={error} />
       )}
-
       <HeaderComponent />
     </div>
   );
