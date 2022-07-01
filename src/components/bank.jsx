@@ -52,6 +52,7 @@ function Bank() {
         parseInt(depositAccount.balance) +
         parseInt(depositAmountRef.current.value);
       console.log("deposit success");
+      console.log(bankData)
       setUsers((state) => {
         const newState = state;
         newState[depositAccountIdx] = depositAccount;
@@ -164,10 +165,16 @@ function Bank() {
 
   let userPriveledge = (user) => {
     if (user.type === 'customer') {
-      return (<button type='button'>Delete</button>)
+      return (<button type='button' onClick={() => handleDelete(user.username)}>Delete</button>)
     } else {return}
   }
   
+  let handleDelete = (id) => {
+    console.log(id)
+    const newUsers = users.filter((x) => x.username !== id)
+    console.log(newUsers)
+    setUsers([...newUsers])
+  }
 
   return (
     <div className="bank">
