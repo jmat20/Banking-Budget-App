@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import HeaderComponent from "./components/header";
 import LogInForm from "./components/login-form";
-import Bank from "./helper";
+import Bank from "./components/bank";
+import { bankData } from "./components/bank";
 
 function App() {
   const adminUser = {
@@ -36,10 +37,13 @@ function App() {
   return (
     <div className="app">
       {user.username !== "" ? (
+        // let userIdx = bankData.findIndex((x) => x.username === details.username)
+        // let loginVerification = bankData[userIdx]
         // if (user.username != "") {
         // if (user.username = adminUser.username) {
         // banking app
-        // } else if (user.username = array.includes(bankdata.username or something idk)) {
+        // } else if (details.username === loginVerification.username && details.password === loginVerification.password) {
+        // setUser as loginVerficiation <- this will have all data of the specific customer
         // budgeting app
         // } else {
         // <LogInForm Login={Login} error={error} /> }
@@ -55,7 +59,7 @@ function App() {
       ) : (
         <LogInForm Login={Login} error={error} />
       )}
-      <HeaderComponent />
+
       <Bank />
     </div>
   );
