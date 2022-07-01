@@ -13,17 +13,19 @@ function App() {
 
   const [user, setUser] = useState({ name: "", username: "" });
   const [error, setError] = useState("");
+  let currentUser = {};
 
   const Login = (details) => {
     console.log(details);
-
+    let userIdx = bankData.findIndex((x) => x.username === details.username);
     if (
-      details.username === adminUser.username &&
-      details.password === adminUser.password
+      details.username === bankData[userIdx].username &&
+      details.password === bankData[userIdx].password
     ) {
+      currentUser = bankData[userIdx];
       setUser({
-        name: adminUser.name,
-        username: adminUser.username,
+        name: bankData[userIdx].name,
+        username: bankData[userIdx].username,
       });
     } else {
       setError("Details do not match!");
