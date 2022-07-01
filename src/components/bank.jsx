@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-export let bankData = [{ accountNum: 1, name: "admin", balance: 50, username:'admin', password:'placeholderpass' }];
+export let bankData = [{ accountNum: 1, name: "admin", balance: 50, username:'admin', password:'placeholderpass', type:'admin' }];
 let userCount = 1000000;
 
 function Bank() {
@@ -137,6 +137,7 @@ function Bank() {
     this.balance = parseInt(balance);
     this.username = username
     this.password = password
+    this.type = 'customer'
   };
 
   let addUser = (name, balance, username, password) => {
@@ -145,17 +146,6 @@ function Bank() {
     console.log(newUser);
     bankData = [...bankData, newUser];
     console.log(bankData);
-  };
-
-  let getBalance = (accountNum) => {
-    let account = bankData.find((x) => x.accountNum === parseInt(getBalRef.current.value));
-    console.log(account.balance);
-    return account.balance;
-  };
-
-  let listUsers = () => {
-    console.log(bankData);
-    return bankData;
   };
 
   let clearInputs = () => {
@@ -172,6 +162,11 @@ function Bank() {
     passwordRef.current.value = ""
   }
 
+  let userPriveledge = (user) => {
+    if (user.type === 'customer') {
+      return (<button type='button'>Delete</button>)
+    } else {return}
+  }
   
 
   return (
@@ -220,6 +215,9 @@ function Bank() {
               <span>Name: {user.name} </span>
               <span>Balance: {user.balance} </span>
               <span>Username: {user.username} </span>
+              <button type='button'>Edit</button>
+              {userPriveledge(user)}
+              
             </li>
           ))}
         </ul>
