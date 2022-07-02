@@ -5,11 +5,6 @@ import Bank from "./components/bank";
 import { bankData } from "./components/bank";
 
 function App() {
-  const adminUser = {
-    name: "admin",
-    username: "admin",
-    password: "placeholderpass",
-  };
 
   const [user, setUser] = useState({ name: "", username: "" });
   const [error, setError] = useState("");

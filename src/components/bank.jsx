@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 
 export let bankData = [{ accountNum: 1, name: "admin", balance: 50, username:'admin', password:'placeholderpass', type:'admin' }];
 let userCount = 1000000;
+let editUser
 
 function Bank() {
   const nameRef = useRef(null);
@@ -16,7 +17,10 @@ function Bank() {
   const nameSearchRef = useRef(null)
   const usernameRef = useRef(null)
   const passwordRef = useRef(null)
-  const getBalRef = useRef(null);
+  const editNameRef = useRef(null);
+  const editUserNameRef = useRef(null)
+  const editPasswordRef = useRef(null)
+  
 
   const [users, setUsers] = useState(bankData);
   const [searchTerm, setSearchTerm] = useState('')
@@ -171,9 +175,41 @@ function Bank() {
   
   let handleDelete = (id) => {
     console.log(id)
-    const newUsers = users.filter((x) => x.username !== id)
+    const newUsers = bankData.filter((x) => x.username !== id)
     console.log(newUsers)
+    bankData= [...newUsers]
+    console.log(bankData)
     setUsers([...newUsers])
+  }
+
+  
+  let handleEdit = (id) => {
+    editUser = users.find((x) => x.username === id)
+    console.log(editUser)
+    editNameRef.current.value = editUser.name
+    editUserNameRef.current.value = editUser.username
+    editPasswordRef.current.value = editUser.password
+    
+    console.log(editUser)
+  }
+
+  let handleSave = () => {
+    let editAccountIdx = users.findIndex(
+      (x) => x.accountNum === parseInt(editUser.accountNum)
+    );
+    let editAccount = users[editAccountIdx];
+    console.log(editAccount)
+    editAccount.name = editNameRef.current.value
+    editAccount.username = editUserNameRef.current.value
+    editAccount.password = editPasswordRef.current.value
+
+    bankData[editAccountIdx] = editAccount
+    setUsers([...bankData])
+    editNameRef.current.value = ''
+    editUserNameRef.current.value = ''
+    editPasswordRef.current.value = ''
+    editAccount = ''
+  
   }
 
   return (
@@ -222,12 +258,18 @@ function Bank() {
               <span>Name: {user.name} </span>
               <span>Balance: {user.balance} </span>
               <span>Username: {user.username} </span>
-              <button type='button'>Edit</button>
+              <button type='button' onClick={() => handleEdit(user.username)}>Edit</button>
               {userPriveledge(user)}
               
             </li>
           ))}
         </ul>
+      </div>
+      <div className="editUser">
+      <input ref={editNameRef} type='text' />
+      <input ref={editUserNameRef} type='text' />
+      <input ref={editPasswordRef} type='text' />
+      <button type="button" onClick={() => handleSave()}>Save</button>
       </div>
     </div>
   );
