@@ -1,4 +1,5 @@
 import React from "react";
+import Logout from "../App";
 import "../assets/scss/styles.css";
 
 let HeaderComponent = () => {
@@ -9,9 +10,13 @@ let HeaderComponent = () => {
         <span className="header-text">PLACEHOLDER BANK</span>
       </div>
       <div className="header-input">
-        <button type="button" className="header-button">
-          Log-Out
-        </button>
+        {user.username !== "" ? (
+          <button type="button" className="header-button" onClick={Logout}>
+            Log-Out
+          </button>
+        ) : (
+          <div className="placeholder"></div>
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import HeaderComponent from "./parts/header";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
 import { bankData } from "./components/bank";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState({ name: "", username: "" });
@@ -32,7 +33,6 @@ function App() {
 
   return (
     <div className="app">
-      <HeaderComponent />;
       {user.username !== "" ? (
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
@@ -57,6 +57,7 @@ function App() {
         <LogInForm Login={Login} error={error} />
       )}
       <Bank />
+      <HeaderComponent Logout={Logout} />
     </div>
   );
 }
