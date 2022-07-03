@@ -34,6 +34,12 @@ function App() {
   return (
     <div className="app">
       {user.username !== "" ? (
+        <Bank />
+      ) : (
+        <LogInForm Login={Login} error={error} />
+      )}
+
+      {
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
         // if (user.username != "") {
@@ -45,12 +51,8 @@ function App() {
         // } else {
         // <LogInForm Login={Login} error={error} /> }
         // }
-
         //BELOW IS JUST PLACEHOLDER FOR THE CODE ABOVE TO BE IMPLEMENTED//
-        <Bank />
-      ) : (
-        <LogInForm Login={Login} error={error} />
-      )}
+      }
     </div>
   );
 }
