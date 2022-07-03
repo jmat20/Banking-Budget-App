@@ -27,7 +27,7 @@ function LogInForm({ Login, error }) {
             <h1>Log in to your account</h1>
 
             <div className="form-group">
-              <label htmlFor="name" className="label">
+              <label htmlFor="name" className="form-label">
                 Username:
               </label>
               <br />
@@ -36,6 +36,7 @@ function LogInForm({ Login, error }) {
                 autoComplete="off"
                 name="username"
                 id="username"
+                className="form-input"
                 onChange={(e) =>
                   setDetails({ ...details, username: e.target.value })
                 }
@@ -44,7 +45,9 @@ function LogInForm({ Login, error }) {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password" className="form-label">
+                Password:
+              </label>
               <br />
               <input
                 type="password"

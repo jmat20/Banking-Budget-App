@@ -46,7 +46,7 @@
       margin-left: 7%;
       margin-bottom: 3%;
 
-      .label {
+      .form-label {
         @include font-properties(
           $color: $grey,
           $family: $body-font,
@@ -55,6 +55,23 @@
           $align: left
         );
       }
+
+      /*input[type="text"] {
+        background: none;
+        outline: none;
+        border-style: none;
+        border-bottom: 2px solid $grey;
+
+        @include font-properties(white, $cabin, $weight: 400);
+
+        transition: 0.2s ease;
+      }
+
+      input[type="text"]:hover,
+      input[type="text"]:active,
+      input[type="text"]:focus {
+        border-color: white;
+      }*/
     }
   }
 }

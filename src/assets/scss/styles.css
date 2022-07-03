@@ -94,9 +94,25 @@
 .body-container .form-container .form-group {
   margin-left: 7%;
   margin-bottom: 3%;
+  /*input[type="text"] {
+        background: none;
+        outline: none;
+        border-style: none;
+        border-bottom: 2px solid $grey;
+
+        @include font-properties(white, $cabin, $weight: 400);
+
+        transition: 0.2s ease;
+      }
+
+      input[type="text"]:hover,
+      input[type="text"]:active,
+      input[type="text"]:focus {
+        border-color: white;
+      }*/
 }
 
-.body-container .form-container .form-group .label {
+.body-container .form-container .form-group .form-label {
   color: #797979;
   font-family: "Signika", "Bahnschrift", sans-serif;
   font-size: 2vh;
