@@ -14,6 +14,11 @@ function App() {
   const Login = (details) => {
     console.log(details);
     let userIdx = users.findIndex((x) => x.username === details.username);
+    console.log(userIdx);
+    if (userIdx < 0) {
+      setError("Username does not exist!");
+      return;
+    }
     if (
       details.username === users[userIdx].username &&
       details.password === users[userIdx].password
