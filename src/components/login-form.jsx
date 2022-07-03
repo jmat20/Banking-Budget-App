@@ -27,7 +27,9 @@ function LogInForm({ Login, error }) {
             <h1>Log in to your account</h1>
 
             <div className="form-group">
-              <label htmlFor="name">Username:</label>
+              <label htmlFor="name" className="label">
+                Username:
+              </label>
               <br />
               <input
                 type="text"
