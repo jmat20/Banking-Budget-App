@@ -19,8 +19,8 @@ function LogInForm({ Login, error }) {
       <header className="header"></header>
 
       <section className="body-container">
-        <div>
-          <h1>panget</h1>
+        <div className="intro-container">
+          <h1>Kwarta.</h1>
         </div>
         <div className="form-container">
           <form onSubmit={submitHandler}>
