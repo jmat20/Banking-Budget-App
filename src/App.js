@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import HeaderComponent from "./components/header";
+import HeaderComponent from "./parts/header";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
 import { bankData } from "./components/bank";
 
 function App() {
-
   const [user, setUser] = useState({ name: "", username: "" });
   const [error, setError] = useState("");
   let currentUser = {};
@@ -33,6 +32,7 @@ function App() {
 
   return (
     <div className="app">
+      <HeaderComponent />;
       {user.username !== "" ? (
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
@@ -56,7 +56,6 @@ function App() {
       ) : (
         <LogInForm Login={Login} error={error} />
       )}
-
       <Bank />
     </div>
   );

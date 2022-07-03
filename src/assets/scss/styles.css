@@ -1,1 +1,60 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&family=Signika:wght@300;400&display=swap");
+/* font weight options: 700, 900 */
+/* font weight options: 300, 400 */
+/* colors */
+/* sizes */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.header {
+  width: 100vw;
+  height: 15vh;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bank-face {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header-logo {
+  height: 15vh;
+  width: auto;
+}
+
+.header-input {
+  width: 10vw;
+  text-align: center;
+}
+
+.header-button {
+  height: 7.5vh;
+  width: 15vh;
+  border-radius: 16px;
+  color: white;
+  font-size: 1rem;
+  background-color: deeppink;
+}
+/*# sourceMappingURL=styles.css.map */

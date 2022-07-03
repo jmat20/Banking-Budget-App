@@ -2,3 +2,39 @@
 @import "./variables";
 @import "./mixins";
 @import "./reset";
+
+.header {
+  width: 100vw;
+  height: 15vh;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bank-face {
+  display: flex;
+  width: 30vw;
+  align-items: center;
+}
+
+.header-logo {
+  height: 15vh;
+  width: auto;
+}
+
+.header-input {
+  width: 10vw;
+  text-align: center;
+}
+
+.header-button {
+  height: 7.5vh;
+  width: 15vh;
+  border-radius: 16px;
+  color: white;
+  font-size: 1rem;
+  background-color: deeppink;
+}
