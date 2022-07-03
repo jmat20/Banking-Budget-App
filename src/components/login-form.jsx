@@ -28,6 +28,7 @@ function LogInForm({ Login, error }) {
 
             <div className="form-group">
               <label htmlFor="name">Username:</label>
+              <br />
               <input
                 type="text"
                 autoComplete="off"
@@ -42,6 +43,7 @@ function LogInForm({ Login, error }) {
 
             <div className="form-group">
               <label htmlFor="password">Password:</label>
+              <br />
               <input
                 type="password"
                 name="password"

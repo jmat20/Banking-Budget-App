@@ -64,7 +64,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 76vh;
+  min-height: 80vh;
   min-width: 100vw;
   background-image: url("../images/loginphoto.png");
   background-size: cover;
