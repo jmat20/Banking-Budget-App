@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { SideBar2 } from "./sidebar";
 import "../assets/scss/bank.css";
 let expenseId = 100;
-let expenseArray = [];
+let expenseArray = [{ id: 1, item: "test", cost: 100, user: "admin" }];
 
 let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
   const [overviewIsActive, setOverviewIsActive] = useState(true);
@@ -10,11 +10,12 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
   const [depositIsActive, setDepositIsActive] = useState(false);
   const [withdrawIsActive, setWithdrawIsActive] = useState(false);
   const [transferIsActive, setTransferIsActive] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState(user.username);
   const [expenseItems, setExpenseItems] = useState(expenseArray);
   const [remainingBudget, setRemainingBudget] = useState(user.balance);
+
   const filteredExpenseItems = expenseItems.filter((x) =>
-    x.username.toLowerCase().includes(user.username.toLowerCase())
+    x.user.toLowerCase().includes(searchTerm.toLowerCase())
   );
   const nameRef = useRef(null);
   const costRef = useRef(null);
@@ -52,23 +53,36 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
     let cost = costRef.current.value;
     let username = user.username;
     addExpense(item, cost, username);
-    console.log("added");
     setExpenseItems((state) => {
       const newState = [...state, expenseArray[expenseArray.length - 1]];
+      console.log(newState);
       return [...newState];
     });
-
-    let ExpenseCosts = filteredExpenseItems.map((i) => i.cost);
-    let totalExpenses = ExpenseCosts.reduce(function (a, b) {
-      return a + b;
-    });
-    let remainingBudget = parseInt(user.balance) - parseInt(totalExpenses);
-    setRemainingBudget(remainingBudget);
+    console.log(expenseItems);
   };
+
+  useEffect(() => {
+    calcBalance();
+  }, [expenseItems, user]);
 
   let addExpense = (item, cost, username) => {
     let newExpense = new Expense(item, cost, username);
     expenseArray = [...expenseArray, newExpense];
+    console.log("added");
+  };
+
+  let calcBalance = () => {
+    let expenseCosts = filteredExpenseItems.map((i) => i.cost);
+    console.log(filteredExpenseItems);
+    console.log(expenseCosts);
+    let totalExpenses = expenseCosts.reduce((a, b) => a + b, 0);
+
+    console.log(user.username);
+    console.log(totalExpenses);
+    let remaining = parseInt(user.balance) - parseInt(totalExpenses);
+    console.log(remaining);
+    setRemainingBudget(0);
+    setRemainingBudget(remaining);
   };
 
   let deposit = () => {
@@ -82,7 +96,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
       setUser((state) => {
         let newState = state;
         newState = depositAccount;
-        return [...newState];
+        return { ...newState };
       });
       updateUsers(user);
       clearInputs();
@@ -103,7 +117,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         setUser((state) => {
           let newState = state;
           newState = withdrawAccount;
-          return [...newState];
+          return { ...newState };
         });
         updateUsers(user);
         clearInputs();
@@ -133,7 +147,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         setUser((state) => {
           let newState = state;
           newState = source;
-          return [...newState];
+          return { ...newState };
         });
         updateUsers(user);
         setUsers((state) => {
@@ -189,8 +203,6 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
               <li key={expense.id}>
                 <span>Item: {expense.item} </span>
                 <span>Cost: Php {expense.cost} </span>
-                <span>Balance: {user.balance} </span>
-                <span>Username: {user.username} </span>
                 <button type="button" onClick={() => handleDelete(expense.id)}>
                   Delete
                 </button>
