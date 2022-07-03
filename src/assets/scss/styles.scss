@@ -1,40 +1,48 @@
-// put all scss files here!! //
 @import "./variables";
 @import "./mixins";
 @import "./reset";
 
+// log-in page //
+.loginpage-container {
+  @include flex-properties(column, center, center);
+  background-color: $white;
+}
+
 .header {
-  width: 100vw;
-  height: 15vh;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-properties(row, space-between, center);
+  @include dimension-properties(12vh, 100vw);
   background-color: white;
+  border-top: 1.5vh solid $blue;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.bank-face {
-  display: flex;
-  width: 30vw;
-  align-items: center;
-}
+.body-container {
+  @include flex-properties(row, space-between, center);
+  @include dimension-properties(76vh, 100vw);
+  background-image: url("../images/loginphoto.png");
+  background-size: cover;
+  background-position: left bottom;
 
-.header-logo {
-  height: 15vh;
-  width: auto;
-}
+  .form-container {
+    @include dimension-properties(60vh, 25vw);
+    margin-right: 5%;
+    background-color: white;
+    border-radius: 8%;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 
-.header-input {
-  width: 10vw;
-  text-align: center;
-}
+    h1 {
+      @include font-properties(
+        $color: $pink,
+        $family: $heading-font,
+        $size: 3vh,
+        $weight: 900,
+        $align: left
+      );
+      padding: 5%;
+    }
 
-.header-button {
-  height: 7.5vh;
-  width: 15vh;
-  border-radius: 16px;
-  color: white;
-  font-size: 1rem;
-  background-color: deeppink;
+    .form-group {
+      margin-left: 5%;
+    }
+  }
 }

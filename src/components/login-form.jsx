@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../assets/scss/styles.css";
 
 function LogInForm({ Login, error }) {
   const [details, setDetails] = useState({
@@ -14,10 +15,13 @@ function LogInForm({ Login, error }) {
   };
 
   return (
-    <div>
-      <header></header>
+    <div className="loginpage-container">
+      <header className="header"></header>
 
       <section className="body-container">
+        <div>
+          <h1>panget</h1>
+        </div>
         <div className="form-container">
           <form onSubmit={submitHandler}>
             <h1>Log in to your account</h1>
