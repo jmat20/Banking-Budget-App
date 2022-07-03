@@ -38,11 +38,23 @@
         $weight: 900,
         $align: left
       );
-      padding: 5%;
+      padding: 8% 7%;
+      padding-bottom: 3%;
     }
 
     .form-group {
-      margin-left: 5%;
+      margin-left: 7%;
+      margin-bottom: 3%;
+
+      .label {
+        @include font-properties(
+          $color: $grey,
+          $family: $body-font,
+          $size: 2vh,
+          $weight: 400,
+          $align: left
+        );
+      }
     }
   }
 }
