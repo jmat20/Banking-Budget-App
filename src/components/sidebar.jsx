@@ -11,6 +11,9 @@ export let SideBar1 = ({
   withdrawIsActive,
   setTransferIsActive,
   transferIsActive,
+  Logout,
+  setUser,
+  setLogin,
 }) => {
   let toggleOverview = () => {
     setOverviewIsActive(true);
@@ -60,6 +63,7 @@ export let SideBar1 = ({
         <div onClick={() => toggleDeposit()}>Deposit Funds</div>
         <div onClick={() => toggleWithdraw()}>Withdraw Funds</div>
         <div onClick={() => toggleTransfer()}>Transfer Funds</div>
+        <div onClick={() => Logout()}>Log out</div>
       </div>
     </div>
   );
@@ -76,6 +80,9 @@ export let SideBar2 = ({
   withdrawIsActive,
   setTransferIsActive,
   transferIsActive,
+  Logout,
+  setUser,
+  setLogin,
 }) => {
   let toggleOverview = () => {
     setOverviewIsActive(true);
@@ -125,6 +132,7 @@ export let SideBar2 = ({
         <div onClick={() => toggleDeposit()}>Deposit Funds</div>
         <div onClick={() => toggleWithdraw()}>Withdraw Funds</div>
         <div onClick={() => toggleTransfer()}>Transfer Funds</div>
+        <div onClick={() => Logout()}>Logout</div>
       </div>
     </div>
   );

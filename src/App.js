@@ -38,13 +38,23 @@ function App() {
   return (
     <div className="app">
       {login === false && <LogInForm Login={Login} error={error} />}
-      {user.type === "admin" && <Bank users={users} setUsers={setUsers} />}
+      {user.type === "admin" && (
+        <Bank
+          users={users}
+          setUsers={setUsers}
+          Logout={Logout}
+          setUser={setUser}
+          setLogin={setLogin}
+        />
+      )}
       {user.type === "customer" && (
         <Budget
           user={user}
           setUser={setUser}
           users={users}
           setUsers={setUsers}
+          Logout={Logout}
+          setLogin={setLogin}
         />
       )}
       {

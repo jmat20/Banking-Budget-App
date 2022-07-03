@@ -22,7 +22,7 @@ export let bankData = [
 let userCount = 1000000;
 let editUser;
 
-function Bank({ users, setUsers }) {
+function Bank({ users, setUsers, Logout, setUser, setLogin }) {
   const nameRef = useRef(null);
   const balRef = useRef(null);
   const depositRef = useRef(null);
@@ -262,6 +262,9 @@ function Bank({ users, setUsers }) {
         withdrawIsActive={withdrawIsActive}
         setTransferIsActive={setTransferIsActive}
         transferIsActive={transferIsActive}
+        Logout={Logout}
+        setUser={setUser}
+        setLogin={setLogin}
       />
 
       <div className={`addUser ${addIsActive ? "" : "hidden"}`}>
