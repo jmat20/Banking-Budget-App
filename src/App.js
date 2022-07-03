@@ -1,44 +1,47 @@
 import React, { useState } from "react";
-import HeaderComponent from "./parts/header";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
-import SideBar from "./components/sidebar";
+import { SideBar1 } from "./components/sidebar";
 import { bankData } from "./components/bank";
+import Budget from "./components/budget";
 
 function App() {
-  const [user, setUser] = useState({ name: "", username: "" });
+  const [user, setUser] = useState({});
   const [error, setError] = useState("");
-  let currentUser = {};
+  const [users, setUsers] = useState(bankData);
+  const [login, setLogin] = useState(false);
 
   const Login = (details) => {
     console.log(details);
-    let userIdx = bankData.findIndex((x) => x.username === details.username);
+    let userIdx = users.findIndex((x) => x.username === details.username);
     if (
-      details.username === bankData[userIdx].username &&
-      details.password === bankData[userIdx].password
+      details.username === users[userIdx].username &&
+      details.password === users[userIdx].password
     ) {
-      currentUser = bankData[userIdx];
-      setUser({
-        name: bankData[userIdx].name,
-        username: bankData[userIdx].username,
-      });
+      setUser(users[userIdx]);
+      setLogin(true);
     } else {
       setError("Details do not match!");
     }
   };
 
   const Logout = () => {
-    setUser({ name: "", username: "" });
+    setUser({});
+    setLogin(false);
   };
 
   return (
     <div className="app">
-      {user.username !== "" ? (
-        <Bank />
-      ) : (
-        <LogInForm Login={Login} error={error} />
+      {login === false && <LogInForm Login={Login} error={error} />}
+      {user.type === "admin" && <Bank users={users} setUsers={setUsers} />}
+      {user.type === "customer" && (
+        <Budget
+          user={user}
+          setUser={setUser}
+          users={users}
+          setUsers={setUsers}
+        />
       )}
-
       {
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
