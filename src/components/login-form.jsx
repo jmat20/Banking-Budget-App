@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../assets/scss/styles.css";
 
 function LogInForm({ Login, error }) {
   const [details, setDetails] = useState({
@@ -14,16 +15,20 @@ function LogInForm({ Login, error }) {
   };
 
   return (
-    <div>
-      <header></header>
+    <div className="loginpage-container">
+      <header className="header"></header>
 
       <section className="body-container">
+        <div className="intro-container">
+          <h1>Kwarta.</h1>
+        </div>
         <div className="form-container">
           <form onSubmit={submitHandler}>
             <h1>Log in to your account</h1>
 
             <div className="form-group">
               <label htmlFor="name">Username:</label>
+              <br />
               <input
                 type="text"
                 autoComplete="off"
@@ -38,6 +43,7 @@ function LogInForm({ Login, error }) {
 
             <div className="form-group">
               <label htmlFor="password">Password:</label>
+              <br />
               <input
                 type="password"
                 name="password"

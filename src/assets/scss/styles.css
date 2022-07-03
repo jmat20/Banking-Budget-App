@@ -1,5 +1,5 @@
 /* font */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&family=Signika:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Signika:wght@300;400&display=swap");
 /* font weight options: 700, 900 */
 /* font weight options: 300, 400 */
 /* colors */
@@ -11,50 +11,86 @@
           box-sizing: border-box;
 }
 
-.header {
-  width: 100vw;
-  height: 15vh;
-  position: fixed;
+.loginpage-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ececec;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 12vh;
+  min-width: 100vw;
   background-color: white;
+  border-top: 1.5vh solid #0fa3b3;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.bank-face {
+.body-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 30vw;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 80vh;
+  min-width: 100vw;
+  background-image: url("../images/loginphoto.png");
+  background-size: cover;
+  background-position: left bottom;
 }
 
-.header-logo {
-  height: 15vh;
-  width: auto;
+.body-container .form-container {
+  min-height: 60vh;
+  min-width: 25vw;
+  margin-right: 5%;
+  background-color: white;
+  border-radius: 8%;
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.header-input {
-  width: 10vw;
-  text-align: center;
+.body-container .form-container h1 {
+  color: #ff148e;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 3vh;
+  font-weight: 900;
+  text-align: left;
+  padding: 5%;
 }
 
-.header-button {
-  height: 7.5vh;
-  width: 15vh;
-  border-radius: 16px;
-  color: white;
-  font-size: 1rem;
-  background-color: deeppink;
+.body-container .form-container .form-group {
+  margin-left: 5%;
 }
 /*# sourceMappingURL=styles.css.map */
