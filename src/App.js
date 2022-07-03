@@ -33,7 +33,6 @@ function App() {
 
   return (
     <div className="app">
-      <HeaderComponent />;
       {user.username !== "" ? (
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
@@ -48,16 +47,10 @@ function App() {
         // }
 
         //BELOW IS JUST PLACEHOLDER FOR THE CODE ABOVE TO BE IMPLEMENTED//
-        <div className="welcome">
-          <h2>
-            Welcome, <span>{user.name}</span>
-          </h2>
-          <button onClick={Logout}>Logout</button>
-        </div>
+        <Bank />
       ) : (
         <LogInForm Login={Login} error={error} />
       )}
-      <Bank />
     </div>
   );
 }
