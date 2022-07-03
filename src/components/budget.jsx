@@ -4,7 +4,7 @@ import "../assets/scss/bank.css";
 let expenseId = 100;
 let expenseArray = [];
 
-let Budget = ({ user, setUser, users, setUsers }) => {
+let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
   const [overviewIsActive, setOverviewIsActive] = useState(true);
   const [addIsActive, setAddIsActive] = useState(false);
   const [depositIsActive, setDepositIsActive] = useState(false);
@@ -172,6 +172,9 @@ let Budget = ({ user, setUser, users, setUsers }) => {
         withdrawIsActive={withdrawIsActive}
         setTransferIsActive={setTransferIsActive}
         transferIsActive={transferIsActive}
+        Logout={Logout}
+        setUser={setUser}
+        setLogin={setLogin}
       />
       <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
         <div className="userStatus">
