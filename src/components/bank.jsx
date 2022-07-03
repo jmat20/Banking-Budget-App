@@ -7,8 +7,16 @@ export let bankData = [
     name: "admin",
     balance: 50,
     username: "admin",
-    password: "placeholderpass",
+    password: "admin",
     type: "admin",
+  },
+  {
+    accountNum: 2,
+    name: "test",
+    balance: 50000,
+    username: "tester",
+    password: "tester",
+    type: "customer",
   },
 ];
 let userCount = 1000000;

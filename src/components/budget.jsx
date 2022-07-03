@@ -44,7 +44,6 @@ let Budget = ({ user, setUser, users, setUsers }) => {
   let handleDelete = (id) => {
     console.log(id);
     const newItems = expenseItems.filter((x) => x.id !== id);
-    console.log(newUsers);
     setExpenseItems([...newItems]);
   };
 
@@ -80,9 +79,8 @@ let Budget = ({ user, setUser, users, setUsers }) => {
         parseInt(depositAccount.balance) +
         parseInt(depositAmountRef.current.value);
       console.log("deposit success");
-      console.log(bankData);
       setUser((state) => {
-        const newState = state;
+        let newState = state;
         newState = depositAccount;
         return [...newState];
       });
@@ -103,7 +101,7 @@ let Budget = ({ user, setUser, users, setUsers }) => {
           parseInt(withdrawAmountRef.current.value);
         console.log("withdraw success");
         setUser((state) => {
-          const newState = state;
+          let newState = state;
           newState = withdrawAccount;
           return [...newState];
         });
@@ -133,8 +131,8 @@ let Budget = ({ user, setUser, users, setUsers }) => {
           parseInt(transferAmountRef.current.value);
         console.log("transfer success");
         setUser((state) => {
-          const newState = state;
-          newState = depositAccount;
+          let newState = state;
+          newState = source;
           return [...newState];
         });
         updateUsers(user);
