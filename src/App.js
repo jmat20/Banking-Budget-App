@@ -1,27 +1,23 @@
 import React, { useState } from "react";
-import HeaderComponent from "./parts/header";
+import HeaderComponent from "./components/header";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
-import SideBar from "./components/sidebar";
 import { bankData } from "./components/bank";
+import Budget from "./components/budget";
 
 function App() {
-  const [user, setUser] = useState({ name: "", username: "" });
+  const [user, setUser] = useState({});
   const [error, setError] = useState("");
-  let currentUser = {};
+  const [users, setUsers] = useState(bankData);
 
   const Login = (details) => {
     console.log(details);
-    let userIdx = bankData.findIndex((x) => x.username === details.username);
+    let userIdx = users.findIndex((x) => x.username === details.username);
     if (
-      details.username === bankData[userIdx].username &&
-      details.password === bankData[userIdx].password
+      details.username === users[userIdx].username &&
+      details.password === users[userIdx].password
     ) {
-      currentUser = bankData[userIdx];
-      setUser({
-        name: bankData[userIdx].name,
-        username: bankData[userIdx].username,
-      });
+      setUser(users[userIdx]);
     } else {
       setError("Details do not match!");
     }
@@ -34,12 +30,6 @@ function App() {
   return (
     <div className="app">
       {user.username !== "" ? (
-        <Bank />
-      ) : (
-        <LogInForm Login={Login} error={error} />
-      )}
-
-      {
         // let userIdx = bankData.findIndex((x) => x.username === details.username)
         // let loginVerification = bankData[userIdx]
         // if (user.username != "") {
@@ -51,8 +41,19 @@ function App() {
         // } else {
         // <LogInForm Login={Login} error={error} /> }
         // }
+
         //BELOW IS JUST PLACEHOLDER FOR THE CODE ABOVE TO BE IMPLEMENTED//
-      }
+        <div className="welcome">
+          <h2>
+            Welcome, <span>{user.name}</span>
+          </h2>
+          <button onClick={Logout}>Logout</button>
+        </div>
+      ) : (
+        <LogInForm Login={Login} error={error} />
+      )}
+      <Bank users={users} setUsers={setUsers} />
+      <Budget currentUser={user} />
     </div>
   );
 }

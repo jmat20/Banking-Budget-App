@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../assets/scss/bank.css";
-import SideBar from "./sidebar";
+import { SideBar1 } from "./sidebar";
 export let bankData = [
   {
     accountNum: 1,
@@ -14,7 +14,7 @@ export let bankData = [
 let userCount = 1000000;
 let editUser;
 
-function Bank() {
+function Bank({ users, setUsers }) {
   const nameRef = useRef(null);
   const balRef = useRef(null);
   const depositRef = useRef(null);
@@ -31,7 +31,6 @@ function Bank() {
   const editUserNameRef = useRef(null);
   const editPasswordRef = useRef(null);
 
-  const [users, setUsers] = useState(bankData);
   const [searchTerm, setSearchTerm] = useState("");
   const [overviewIsActive, setOverviewIsActive] = useState(true);
   const [addIsActive, setAddIsActive] = useState(false);
@@ -244,7 +243,7 @@ function Bank() {
 
   return (
     <div className="bank">
-      <SideBar
+      <SideBar1
         setOverviewIsActive={setOverviewIsActive}
         overviewIsActive={overviewIsActive}
         setAddIsActive={setAddIsActive}
@@ -252,7 +251,7 @@ function Bank() {
         setDepositIsActive={setDepositIsActive}
         depositIsActive={depositIsActive}
         setWithdrawIsActive={setWithdrawIsActive}
-        withdrawIsActive={setWithdrawIsActive}
+        withdrawIsActive={withdrawIsActive}
         setTransferIsActive={setTransferIsActive}
         transferIsActive={transferIsActive}
       />
