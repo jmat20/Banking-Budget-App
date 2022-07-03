@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeaderComponent from "./parts/header";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
+import SideBar from "./components/sidebar";
 import { bankData } from "./components/bank";
 
 function App() {

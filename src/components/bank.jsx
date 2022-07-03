@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
-
+import '../assets/scss/bank.css'
+import SideBar from "./sidebar";
 export let bankData = [{ accountNum: 1, name: "admin", balance: 50, username:'admin', password:'placeholderpass', type:'admin' }];
 let userCount = 1000000;
 let editUser
+
 
 function Bank() {
   const nameRef = useRef(null);
@@ -24,6 +26,13 @@ function Bank() {
 
   const [users, setUsers] = useState(bankData);
   const [searchTerm, setSearchTerm] = useState('')
+  const [overviewIsActive, setOverviewIsActive] = useState(true);
+  const [addIsActive, setAddIsActive] = useState(false);
+  const [depositIsActive, setDepositIsActive] = useState(false);
+  const [withdrawIsActive, setWithdrawIsActive] = useState(false);
+  const [transferIsActive, setTransferIsActive] = useState(false);
+  const [editIsActive, setEditIsActive] = useState(false);
+  
 
   const filteredUsers = users.filter((x) => x.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
@@ -184,6 +193,12 @@ function Bank() {
 
   
   let handleEdit = (id) => {
+    setOverviewIsActive(true);
+    setAddIsActive(false);
+    setDepositIsActive(false)
+    setTransferIsActive(false)
+    setWithdrawIsActive(false)
+    setEditIsActive(true)
     editUser = users.find((x) => x.username === id)
     console.log(editUser)
     editNameRef.current.value = editUser.name
@@ -209,13 +224,24 @@ function Bank() {
     editUserNameRef.current.value = ''
     editPasswordRef.current.value = ''
     editAccount = ''
-  
+    setEditIsActive(false)
   }
 
   return (
     <div className="bank">
-      <div className="createUser">
-        <h3>Create</h3>
+      <SideBar setOverviewIsActive={setOverviewIsActive}
+        overviewIsActive={overviewIsActive}
+        setAddIsActive={setAddIsActive} 
+        addIsActive={addIsActive} 
+        setDepositIsActive={setDepositIsActive} 
+        depositIsActive={depositIsActive}
+        setWithdrawIsActive={setWithdrawIsActive}
+        withdrawIsActive={setWithdrawIsActive}
+        setTransferIsActive={setTransferIsActive}
+        transferIsActive={transferIsActive}
+        />
+      <div className={`addUser ${addIsActive ? '' : 'hidden'}`}>
+        <h3>Create Account</h3>
         <input ref={nameRef} type="text" placeholder="Account Name" required />
         <input ref={balRef} type="number" placeholder="Initial Balance" required />
         <input ref={usernameRef} type="text" placeholder="Login Username" required />
@@ -224,24 +250,24 @@ function Bank() {
           Add
         </button>
       </div>
-      <div className="deposit">
-        <h3>Deposit</h3>
+      <div className={`depost ${depositIsActive ? '' : 'hidden'}`}>
+        <h3>Deposit Funds</h3>
         <input ref={depositRef} type="number" placeholder="Account Number" required />
         <input ref={depositAmountRef} type="number" placeholder="Deposit Amount" required />
         <button type="button" onClick={deposit}>
           deposit
         </button>
       </div>
-      <div className="withdraw">
-        <h3>withdraw</h3>
+      <div className={`withdraw ${withdrawIsActive ? '' : 'hidden'}`}>
+        <h3>Withdraw Funds</h3>
         <input ref={withdrawRef} type="number" placeholder="Account Number" required />
         <input ref={withdrawAmountRef} type="number" placeholder="Withdraw Amount" required />
         <button type="button" onClick={withdraw}>
           withdraw
         </button>
       </div>
-      <div className="transfer">
-        <h3>transfer</h3>
+      <div className={`transfer ${transferIsActive ? '' : 'hidden'}`}>
+        <h3>Transfer Funds</h3>
         <input ref={sourceAccountRef} type="number" placeholder="Transfer from?" required />
         <input ref={destinationAccountRef} type="number" placeholder="Transfer to?" required />
         <input ref={transferAmountRef} type="number" placeholder="Transfer Amount" required />
@@ -249,7 +275,8 @@ function Bank() {
           transfer
         </button>
       </div>
-      <div className="bankDataDisp">
+      <div className={`overview ${overviewIsActive ? '' : 'hidden'}`}>
+        <h3>Admin Overview</h3>
       <input ref={nameSearchRef} type="text" placeholder="Account Name Search" onChange={handleSearch} />
         <ul>
           {filteredUsers.map((user) => (
@@ -265,7 +292,8 @@ function Bank() {
           ))}
         </ul>
       </div>
-      <div className="editUser">
+      <div className={`editUser ${editIsActive ? '' : 'hidden'}`}>
+        <h5>Edit Account</h5>
       <input ref={editNameRef} type='text' />
       <input ref={editUserNameRef} type='text' />
       <input ref={editPasswordRef} type='text' />
