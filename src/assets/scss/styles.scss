@@ -145,7 +145,78 @@
 // bank page //
 
 .bank-body {
-  @include flex-properties(row, flex-start, center);
+  @include flex-properties(row, flex-start, flex-start);
   @include dimension-properties(88vh, 100vw);
   background-color: $white;
 }
+
+.bank-main {
+  @include flex-properties(column, flex-start, flex-start);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .component-container {
+    @include dimension-properties(100%, 70vw);
+    margin-top: 3%;
+    margin-left: 7%;
+
+    .component-heading {
+      @include font-properties(
+        $color: $pink,
+        $family: $heading-font,
+        $size: $h2,
+        $weight: 900,
+        $align: left
+      );
+    }
+
+    .component-input-container {
+      @include dimension-properties(100%, 70vw);
+      background-color: white;
+      margin-top: 1%;
+      border-left: 1.5vh solid $pink;
+
+      .component-group {
+        padding-top: 2%;
+        padding-left: 1%;
+
+        .component-label {
+          @include font-properties(
+            $color: $grey,
+            $family: $body-font,
+            $size: $p,
+            $weight: 400,
+            $align: left
+          );
+        }
+
+        .component-input {
+          margin-bottom: 2%;
+          padding: 1%;
+          width: 70%;
+          font-size: $h4;
+        }
+      }
+    }
+
+    .component-submit {
+      @include dimension-properties(5vh, 7vw);
+      @include font-properties(
+        $color: white,
+        $family: $heading-font,
+        $size: $p,
+        $weight: 700,
+        $align: center
+      );
+      margin-top: 2%;
+      background-color: $pink;
+      border: none;
+      border-radius: 10px;
+      padding: 0 1vh;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+// components //
