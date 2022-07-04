@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
+import Budget from "./components/budget";
 import { SideBar1 } from "./components/sidebar";
 import { bankData } from "./components/bank";
-import Budget from "./components/budget";
+import { expenseArray } from "./components/budget";
 
 function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [users, setUsers] = useState(bankData);
+  const [expenseItems, setExpenseItems] = useState(expenseArray);
   const [login, setLogin] = useState(false);
 
   const Login = (details) => {
@@ -31,13 +33,30 @@ function App() {
   };
 
   const Logout = () => {
+    window.localStorage.setItem("bankAppData", users);
+    window.localStorage.setItem("budgetAppData", expenseItems);
     setUser({});
     setLogin(false);
   };
 
+  const loadData = () => {
+    if (
+      window.localStorage.getItem("bankAppData") &&
+      window.localStorage.getItem("budgetAppData")
+    ) {
+      setUsers(window.localStorage.getItem("bankAppData"));
+      setExpenseItems(window.localStorage.getItem("budgetAppData"));
+    }
+  };
+
   return (
     <div className="app">
-      {login === false && <LogInForm Login={Login} error={error} />}
+      {login === false && (
+        <div>
+          <LogInForm Login={Login} error={error} />{" "}
+          <button onClick={() => loadData()}>Load Data</button>
+        </div>
+      )}
       {user.type === "admin" && (
         <Bank
           users={users}
@@ -52,6 +71,8 @@ function App() {
           user={user}
           setUser={setUser}
           users={users}
+          expenseItems={expenseItems}
+          setExpenseItems={setExpenseItems}
           setUsers={setUsers}
           Logout={Logout}
           setLogin={setLogin}

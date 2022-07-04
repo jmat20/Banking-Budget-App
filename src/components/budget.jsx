@@ -3,21 +3,26 @@ import { SideBar2 } from "./sidebar";
 import "../assets/scss/styles.css";
 
 let expenseId = 100;
-let expenseArray = [{ id: 1, item: "test", cost: 100, user: "admin" }];
+export let expenseArray = [{ id: 1, item: "test", cost: 100, user: "admin" }];
 
-let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
+let Budget = ({
+  user,
+  setUser,
+  users,
+  setUsers,
+  expenseItems,
+  setExpenseItems,
+  Logout,
+  setLogin,
+}) => {
   const [overviewIsActive, setOverviewIsActive] = useState(true);
   const [addIsActive, setAddIsActive] = useState(false);
   const [depositIsActive, setDepositIsActive] = useState(false);
   const [withdrawIsActive, setWithdrawIsActive] = useState(false);
   const [transferIsActive, setTransferIsActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState(user.username);
-  const [expenseItems, setExpenseItems] = useState(expenseArray);
   const [remainingBudget, setRemainingBudget] = useState(user.balance);
 
-  const filteredExpenseItems = expenseItems.filter((x) =>
-    x.user.toLowerCase().includes(searchTerm.toLowerCase())
-  );
   const nameRef = useRef(null);
   const costRef = useRef(null);
   const depositAmountRef = useRef(null);
@@ -25,6 +30,9 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
   const destinationAccountRef = useRef(null);
   const transferAmountRef = useRef(null);
 
+  const filteredExpenseItems = expenseItems.filter((x) =>
+    x.user.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   let Expense = function (item, cost, username) {
     this.id = expenseId + 1;
     expenseId++;
@@ -62,14 +70,10 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
     console.log(expenseItems);
   };
 
-  useEffect(() => {
-    calcBalance();
-  }, [expenseItems, user]);
-
   let addExpense = (item, cost, username) => {
     let newExpense = new Expense(item, cost, username);
     expenseArray = [...expenseArray, newExpense];
-    console.log("added");
+    window.alert("Expense Added.");
   };
 
   let calcBalance = () => {
@@ -93,7 +97,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
       depositAccount.balance =
         parseInt(depositAccount.balance) +
         parseInt(depositAmountRef.current.value);
-      console.log("deposit success");
+      window.alert("Deposit Success.");
       setUser((state) => {
         let newState = state;
         newState = depositAccount;
@@ -102,7 +106,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
       updateUsers(user);
       clearInputs();
     } else {
-      console.log("Transaction Failed. Please enter a valid amount.");
+      window.alert("Transaction Failed. Please enter a valid amount.");
       return;
     }
   };
@@ -114,7 +118,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         withdrawAccount.balance =
           parseInt(withdrawAccount.balance) -
           parseInt(withdrawAmountRef.current.value);
-        console.log("withdraw success");
+        window.alert("Withdrawal Success.");
         setUser((state) => {
           let newState = state;
           newState = withdrawAccount;
@@ -123,10 +127,10 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         updateUsers(user);
         clearInputs();
       } else {
-        console.log("Not enough balance.");
+        window.alert("Not enough balance.");
       }
     } else {
-      console.log("Transaction Failed. Please re-check account details.");
+      window.alert("Transaction Failed. Please re-check account details.");
       return;
     }
   };
@@ -144,7 +148,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         destination.balance =
           parseInt(destination.balance) +
           parseInt(transferAmountRef.current.value);
-        console.log("transfer success");
+        window.alert("Fund Transfer Success.");
         setUser((state) => {
           let newState = state;
           newState = source;
@@ -158,10 +162,10 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
         });
         clearInputs();
       } else {
-        console.log("Not enough balance.");
+        window.alert("Not enough balance.");
       }
     } else {
-      console.log("Transaction Failed. Please re-check account details.");
+      window.alert("Transaction Failed. Please re-check account details.");
       return;
     }
   };
@@ -174,6 +178,11 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
     destinationAccountRef.current.value = "";
     transferAmountRef.current.value = "";
   };
+
+  useEffect(() => {
+    calcBalance();
+  }, [expenseItems, user]);
+
   return (
     <div className="budget-container">
       <header className="header"></header>
