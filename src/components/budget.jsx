@@ -335,20 +335,43 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
             }`}
           >
             <h3>Transfer Funds</h3>
-            <input
-              ref={destinationAccountRef}
-              type="number"
-              placeholder="Transfer to?"
-              required
-            />
-            <input
-              ref={transferAmountRef}
-              type="number"
-              placeholder="Transfer Amount"
-              required
-            />
-            <button type="button" onClick={transfer}>
-              transfer
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="destination" className="component-label">
+                  Transfer to:
+                </label>
+                <br />
+                <input
+                  ref={destinationAccountRef}
+                  name="destination"
+                  type="number"
+                  placeholder="Transfer to?"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="amount" className="component-label">
+                  Transfer Amount:
+                </label>
+                <br />
+                <input
+                  ref={transferAmountRef}
+                  name="amount"
+                  type="number"
+                  placeholder="Transfer Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              className="component-submit"
+              type="button"
+              onClick={transfer}
+            >
+              Transfer
             </button>
           </div>
         </div>
