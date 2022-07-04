@@ -71,7 +71,8 @@ input[type="password"]:focus {
 }
 
 .loginpage-container,
-.bank-container {
+.bank-container,
+.budget-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import "../assets/scss/bank.css";
+import "../assets/scss/styles.css";
 import { SideBar1 } from "./sidebar";
+
 export let bankData = [
   {
     accountNum: 1,

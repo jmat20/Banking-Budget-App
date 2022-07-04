@@ -8,7 +8,8 @@
 
 // log-in page //
 .loginpage-container,
-.bank-container {
+.bank-container,
+.budget-container {
   @include flex-properties(column, center, center);
   background-color: $white;
 }
