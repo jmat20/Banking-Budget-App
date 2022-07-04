@@ -1,5 +1,5 @@
-@import "./variables";
 @import "./mixins";
+@import "./variables";
 @import "./reset";
 
 // log-in page //
@@ -34,7 +34,7 @@
       @include font-properties(
         $color: $pink,
         $family: $heading-font,
-        $size: 3vh,
+        $size: $h3,
         $weight: 900,
         $align: left
       );
@@ -50,28 +50,87 @@
         @include font-properties(
           $color: $grey,
           $family: $body-font,
-          $size: 2vh,
+          $size: $p,
           $weight: 400,
           $align: left
         );
       }
 
-      /*input[type="text"] {
-        background: none;
-        outline: none;
-        border-style: none;
-        border-bottom: 2px solid $grey;
+      .form-input {
+        margin-top: 1%;
+        padding: 2%;
+        width: 90%;
+        font-size: $h4;
+      }
+    }
 
-        @include font-properties(white, $cabin, $weight: 400);
+    .form-submit {
+      @include dimension-properties(5vh, 7vw);
+      @include font-properties(
+        $color: white,
+        $family: $heading-font,
+        $size: $p,
+        $weight: 700,
+        $align: center
+      );
+      margin-top: 3%;
+      margin-left: 7%;
+      background-color: $pink;
+      border: none;
+      border-radius: 10px;
+      padding: 0 1vh;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-        transition: 0.2s ease;
+    .form-register {
+      width: 20vw;
+      margin-left: 7%;
+      word-wrap: break-word;
+
+      p {
+        @include font-properties(
+          $color: $blue,
+          $family: $body-font,
+          $size: $p,
+          $weight: 400,
+          $align: left
+        );
+        margin-top: 5%;
       }
 
-      input[type="text"]:hover,
-      input[type="text"]:active,
-      input[type="text"]:focus {
-        border-color: white;
-      }*/
+      .error {
+        color: $pink;
+        font-size: $h4;
+        margin-top: 3%;
+      }
+    }
+  }
+
+  .intro-container {
+    align-self: flex-end;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    width: 50%;
+
+    h1 {
+      @include font-properties(
+        $color: $blue,
+        $family: $heading-font,
+        $size: $h1,
+        $weight: 700,
+        $align: left
+      );
+    }
+
+    p {
+      @include font-properties(
+        $color: white,
+        $family: $body-font,
+        $size: $h3,
+        $weight: 400,
+        $align: left
+      );
     }
   }
 }

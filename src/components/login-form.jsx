@@ -21,7 +21,13 @@ function LogInForm({ Login, error }) {
       <section className="body-container">
         <div className="intro-container">
           <h1>Kwarta.</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+            commodo ac velit vel malesuada. Aenean tincidunt, tortor a egestas
+            mollis, arcu sapien congue ex, id tempor eros metus vel nisl.
+          </p>
         </div>
+
         <div className="form-container">
           <form onSubmit={submitHandler}>
             <h1>Log in to your account</h1>
@@ -53,6 +59,7 @@ function LogInForm({ Login, error }) {
                 type="password"
                 name="password"
                 id="password"
+                className="form-input"
                 onChange={(e) =>
                   setDetails({ ...details, password: e.target.value })
                 }
@@ -60,9 +67,15 @@ function LogInForm({ Login, error }) {
               />
             </div>
 
-            <input type="submit" value="log-in" />
+            <input type="submit" className="form-submit" value="log-in" />
 
-            {error !== "" ? <div className="error">{error}</div> : ""}
+            <div className="form-register">
+              {error !== "" ? <p className="error">{error}</p> : ""}
+              <p>
+                To register, have an administrator open an account at any Kwarta
+                branch to gain access to the online banking experience!
+              </p>
+            </div>
           </form>
         </div>
       </section>
