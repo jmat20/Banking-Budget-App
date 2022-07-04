@@ -56,14 +56,24 @@ export let SideBar1 = ({
   };
 
   return (
-    <div className="sideBarContent">
-      <div>
-        <div onClick={() => toggleOverview()}>Overview</div>
-        <div onClick={() => toggleAdd()}>Create Account</div>
-        <div onClick={() => toggleDeposit()}>Deposit Funds</div>
-        <div onClick={() => toggleWithdraw()}>Withdraw Funds</div>
-        <div onClick={() => toggleTransfer()}>Transfer Funds</div>
-        <div onClick={() => Logout()}>Log out</div>
+    <div className="sidebar-container">
+      <div className="sidebar-item" onClick={() => toggleOverview()}>
+        Overview
+      </div>
+      <div className="sidebar-item" onClick={() => toggleAdd()}>
+        Create Account
+      </div>
+      <div className="sidebar-item" onClick={() => toggleDeposit()}>
+        Deposit Funds
+      </div>
+      <div className="sidebar-item" onClick={() => toggleWithdraw()}>
+        Withdraw Funds
+      </div>
+      <div className="sidebar-item" onClick={() => toggleTransfer()}>
+        Transfer Funds
+      </div>
+      <div className="sidebar-item" onClick={() => Logout()}>
+        Log out
       </div>
     </div>
   );
@@ -125,14 +135,24 @@ export let SideBar2 = ({
   };
 
   return (
-    <div className="sideBarContent">
-      <div>
-        <div onClick={() => toggleOverview()}>Overview</div>
-        <div onClick={() => toggleAdd()}>Add Expense</div>
-        <div onClick={() => toggleDeposit()}>Deposit Funds</div>
-        <div onClick={() => toggleWithdraw()}>Withdraw Funds</div>
-        <div onClick={() => toggleTransfer()}>Transfer Funds</div>
-        <div onClick={() => Logout()}>Logout</div>
+    <div className="sidebar-container">
+      <div className="sidebar-item" onClick={() => toggleOverview()}>
+        Overview
+      </div>
+      <div className="sidebar-item" onClick={() => toggleAdd()}>
+        Add Expense
+      </div>
+      <div className="sidebar-item" onClick={() => toggleDeposit()}>
+        Deposit Funds
+      </div>
+      <div className="sidebar-item" onClick={() => toggleWithdraw()}>
+        Withdraw Funds
+      </div>
+      <div className="sidebar-item" onClick={() => toggleTransfer()}>
+        Transfer Funds
+      </div>
+      <div className="sidebar-item" onClick={() => Logout()}>
+        Logout
       </div>
     </div>
   );

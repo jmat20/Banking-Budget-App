@@ -1,9 +1,14 @@
-@import "./mixins";
 @import "./variables";
+@import "./mixins";
 @import "./reset";
 
+// parts //
+@import "./textbox";
+@import "./sidebar";
+
 // log-in page //
-.loginpage-container {
+.loginpage-container,
+.bank-container {
   @include flex-properties(column, center, center);
   background-color: $white;
 }
@@ -13,7 +18,8 @@
   @include dimension-properties(12vh, 100vw);
   background-color: white;
   border-top: 1.5vh solid $blue;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
 
 .body-container {
@@ -102,7 +108,7 @@
       .error {
         color: $pink;
         font-size: $h4;
-        margin-top: 3%;
+        margin-top: 5%;
       }
     }
   }
@@ -133,4 +139,12 @@
       );
     }
   }
+}
+
+// bank page //
+
+.bank-body {
+  @include flex-properties(row, flex-start, center);
+  @include dimension-properties(88vh, 100vw);
+  background-color: $white;
 }

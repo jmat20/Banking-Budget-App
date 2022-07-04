@@ -9,6 +9,7 @@ $body-font: "Signika", "Bahnschrift", sans-serif;
 /* colors */
 $pink: rgb(255, 20, 142);
 $blue: rgb(8, 184, 204);
+$dark-blue: rgb(14, 161, 178);
 $grey: rgb(121, 121, 121);
 $white: rgb(236, 236, 236);
 
@@ -18,25 +19,3 @@ $h2: 4vh;
 $h3: 3vh;
 $h4: 2.5vh;
 $p: 2vh;
-
-/* textboxes */
-input[type="text"],
-input[type="password"] {
-  background: none;
-  outline: none;
-  border-style: none;
-  border-bottom: 2px solid $grey;
-
-  @include font-properties($grey, $body-font, $weight: 300);
-
-  transition: 0.2s ease;
-}
-
-input[type="text"]:hover,
-input[type="text"]:active,
-input[type="text"]:focus,
-input[type="password"]:hover,
-input[type="password"]:active,
-input[type="password"]:focus {
-  border-color: $blue;
-}
