@@ -267,14 +267,22 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
         setLogin={setLogin}
       />
 
-      <div className={`addUser ${addIsActive ? "" : "hidden"}`}>
-        <h3>Create Account</h3>
-        <input ref={nameRef} type="text" placeholder="Account Name" required />
-        <input
-          ref={balRef}
-          type="number"
-          placeholder="Initial Balance"
-          required
+
+      <section className="body">
+        <SideBar1
+          setOverviewIsActive={setOverviewIsActive}
+          overviewIsActive={overviewIsActive}
+          setAddIsActive={setAddIsActive}
+          addIsActive={addIsActive}
+          setDepositIsActive={setDepositIsActive}
+          depositIsActive={depositIsActive}
+          setWithdrawIsActive={setWithdrawIsActive}
+          withdrawIsActive={withdrawIsActive}
+          setTransferIsActive={setTransferIsActive}
+          transferIsActive={transferIsActive}
+          Logout={Logout}
+          setUser={setUser}
+          setLogin={setLogin}
         />
         <input
           ref={usernameRef}
@@ -293,98 +301,353 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
         </button>
       </div>
 
-      <div className={`depost ${depositIsActive ? "" : "hidden"}`}>
-        <h3>Deposit Funds</h3>
-        <input
-          ref={depositRef}
-          type="number"
-          placeholder="Account Number"
-          required
-        />
-        <input
-          ref={depositAmountRef}
-          type="number"
-          placeholder="Deposit Amount"
-          required
-        />
-        <button type="button" onClick={deposit}>
-          deposit
-        </button>
-      </div>
-      <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
-        <h3>Withdraw Funds</h3>
-        <input
-          ref={withdrawRef}
-          type="number"
-          placeholder="Account Number"
-          required
-        />
-        <input
-          ref={withdrawAmountRef}
-          type="number"
-          placeholder="Withdraw Amount"
-          required
-        />
-        <button type="button" onClick={withdraw}>
-          withdraw
-        </button>
-      </div>
-      <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
-        <h3>Transfer Funds</h3>
-        <input
-          ref={sourceAccountRef}
-          type="number"
-          placeholder="Transfer from?"
-          required
-        />
-        <input
-          ref={destinationAccountRef}
-          type="number"
-          placeholder="Transfer to?"
-          required
-        />
-        <input
-          ref={transferAmountRef}
-          type="number"
-          placeholder="Transfer Amount"
-          required
-        />
-        <button type="button" onClick={transfer}>
-          transfer
-        </button>
-      </div>
-      <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
-        <h3>Admin Overview</h3>
-        <input
-          ref={nameSearchRef}
-          type="text"
-          placeholder="Account Name Search"
-          onChange={handleSearch}
-        />
-        <ul>
-          {filteredUsers.map((user) => (
-            <li key={user.accountNum}>
-              <span>Account: {user.accountNum} </span>
-              <span>Name: {user.name} </span>
-              <span>Balance: {user.balance} </span>
-              <span>Username: {user.username} </span>
-              <button type="button" onClick={() => handleEdit(user.username)}>
-                Edit
+
+        <div className="bank-main">
+          <div
+            className={`
+            component-container 
+            addUser ${addIsActive ? "" : "hidden"}
+            `}
+          >
+            <h3 className="component-heading">Create Account</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="name" className="component-label">
+                  Account Name:
+                </label>
+                <br />
+                <input
+                  ref={nameRef}
+                  name="name"
+                  type="text"
+                  placeholder="Account Name"
+                  className="component-input"
+                  required
+                />
+              </div>
+              <div className="component-group">
+                <label htmlFor="balance" className="component-label">
+                  Initial Balance:
+                </label>
+                <br />
+                <input
+                  ref={balRef}
+                  name="balance"
+                  type="number"
+                  min="0"
+                  placeholder="Initial Balance"
+                  className="component-input"
+                  required
+                />
+              </div>
+              <div className="component-group">
+                <label htmlFor="balance" className="component-label">
+                  Username:
+                </label>
+                <br />
+                <input
+                  ref={usernameRef}
+                  name="username"
+                  type="text"
+                  placeholder="Login Username"
+                  className="component-input"
+                  required
+                />
+              </div>
+              <div className="component-group">
+                <label htmlFor="balance" className="component-label">
+                  Password:
+                </label>
+                <br />
+                <input
+                  ref={passwordRef}
+                  name="password"
+                  type="password"
+                  placeholder="Account Password"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={handleAdd}
+              className="component-submit"
+            >
+              Add
+            </button>
+          </div>
+
+          <div
+            className={`
+            component-container 
+            deposit 
+            ${depositIsActive ? "" : "hidden"}
+            `}
+          >
+            <h3 className="component-heading">Deposit Funds</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="account number" className="component-label">
+                  Account Number:
+                </label>
+                <br />
+                <input
+                  ref={depositRef}
+                  name="account number"
+                  type="number"
+                  placeholder="Account Number"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="deposit amount" className="component-label">
+                  Deposit Amount:
+                </label>
+                <br />
+                <input
+                  ref={depositAmountRef}
+                  name="deposit amount"
+                  type="number"
+                  placeholder="Deposit Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              className="component-submit"
+              type="button"
+              onClick={deposit}
+            >
+              Deposit
+            </button>
+          </div>
+
+          <div
+            className={`
+            component-container 
+            withdraw 
+            ${withdrawIsActive ? "" : "hidden"}
+            `}
+          >
+            <h3 className="component-heading">Withdraw Funds</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="account number" className="component-label">
+                  Account Number:
+                </label>
+                <br />
+                <input
+                  ref={withdrawRef}
+                  name="account number"
+                  type="number"
+                  placeholder="Account Number"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="withdraw amount" className="component-label">
+                  Withdraw Amount:
+                </label>
+                <br />
+                <input
+                  ref={withdrawAmountRef}
+                  name="withdraw amount"
+                  type="number"
+                  placeholder="Withdraw Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              className="component-submit"
+              type="button"
+              onClick={withdraw}
+            >
+              Withdraw
+            </button>
+          </div>
+
+          <div
+            className={`
+            component-container 
+            transfer 
+            ${transferIsActive ? "" : "hidden"}`}
+          >
+            <h3 className="component-heading">Transfer Funds</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="source" className="component-label">
+                  Transfer from:
+                </label>
+                <br />
+                <input
+                  ref={sourceAccountRef}
+                  name="source"
+                  type="number"
+                  placeholder="Transfer from?"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="destination" className="component-label">
+                  Transfer to:
+                </label>
+                <br />
+                <input
+                  ref={destinationAccountRef}
+                  name="destination"
+                  type="number"
+                  placeholder="Transfer to?"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="transfer amount" className="component-label">
+                  Transfer Amount:
+                </label>
+                <br />
+                <input
+                  ref={transferAmountRef}
+                  name="transfer amount"
+                  type="number"
+                  placeholder="Transfer Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              className="component-submit"
+              type="button"
+              onClick={transfer}
+            >
+              transfer
+            </button>
+          </div>
+
+          <div
+            className={`
+            component-container 
+            overview 
+            ${overviewIsActive ? "" : "hidden"}
+            `}
+          >
+            <h3 className="component-heading">Admin Overview</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="account search" className="component-label">
+                  Account Search:
+                </label>
+                <br />
+                <input
+                  ref={nameSearchRef}
+                  name="account search"
+                  type="text"
+                  placeholder="Account Name Search"
+                  className="component-input"
+                  onChange={handleSearch}
+                />
+              </div>
+            </div>
+
+            <h3 className="component-heading">List of Accounts</h3>
+            <div className="component-input-container">
+              <ul>
+                {filteredUsers.map((user) => (
+                  <li key={user.accountNum}>
+                    <span>Account: {user.accountNum} </span>
+                    <span></span>
+                    <span>Name: {user.name} </span>
+                    <span></span>
+                    <span>Balance: {user.balance} </span>
+                    <span></span>
+                    <span>Username: {user.username} </span>
+                    <span></span>
+                    <button
+                      type="button"
+                      onClick={() => handleEdit(user.username)}
+                    >
+                      Edit
+                    </button>
+                    {userPriveledge(user)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              className={` 
+            
+            editUser 
+            ${editIsActive ? "" : "hidden"}
+            `}
+            >
+              <h5 className="component-heading">Edit Account</h5>
+              <div className="component-input-container">
+                <div className="component-group">
+                  <label htmlFor="edit name" className="component-label">
+                    Edit Name:
+                  </label>
+                  <br />
+                  <input
+                    ref={editNameRef}
+                    name="edit name"
+                    type="text"
+                    className="component-input"
+                  />
+                </div>
+
+                <div className="component-group">
+                  <label htmlFor="edit username" className="component-label">
+                    Edit Username:
+                  </label>
+                  <br />
+                  <input
+                    ref={editUserNameRef}
+                    name="edit username"
+                    type="text"
+                    className="component-input"
+                  />
+                </div>
+
+                <div className="component-group">
+                  <label htmlFor="edit username" className="component-label">
+                    Edit Password:
+                  </label>
+                  <br />
+                  <input
+                    ref={editPasswordRef}
+                    type="password"
+                    className="component-input"
+                  />
+                </div>
+              </div>
+              <button
+                className="component-submit"
+                type="button"
+                onClick={() => handleSave()}
+              >
+                Save
               </button>
-              {userPriveledge(user)}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={`editUser ${editIsActive ? "" : "hidden"}`}>
-        <h5>Edit Account</h5>
-        <input ref={editNameRef} type="text" />
-        <input ref={editUserNameRef} type="text" />
-        <input ref={editPasswordRef} type="text" />
-        <button type="button" onClick={() => handleSave()}>
-          Save
-        </button>
-      </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

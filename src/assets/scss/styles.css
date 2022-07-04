@@ -9,10 +9,12 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   background: none;
   outline: none;
   border-style: none;
@@ -29,8 +31,17 @@ input[type="text"]:active,
 input[type="text"]:focus,
 input[type="password"]:hover,
 input[type="password"]:active,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="number"]:hover,
+input[type="number"]:active,
+input[type="number"]:focus {
   border-color: #08b8cc;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .sidebar-container {
@@ -240,7 +251,7 @@ input[type="password"]:focus {
   text-align: left;
 }
 
-.bank-body {
+.body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -251,11 +262,99 @@ input[type="password"]:focus {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   min-height: 88vh;
   min-width: 100vw;
   background-color: #ececec;
+}
+
+.bank-main,
+.budget-main {
+  min-height: 88vh;
+  min-width: 70vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.bank-main .component-container,
+.budget-main .component-container {
+  min-height: 100%;
+  min-width: 100%;
+  margin-top: 1%;
+  margin-left: 7%;
+  overflow-x: hidden;
+}
+
+.bank-main .component-container .component-heading,
+.budget-main .component-container .component-heading {
+  color: #ff148e;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 4vh;
+  font-weight: 900;
+  text-align: left;
+  margin-top: 2%;
+}
+
+.bank-main .component-container .component-input-container,
+.budget-main .component-container .component-input-container {
+  min-height: 100%;
+  min-width: 70vw;
+  background-color: white;
+  margin-top: 1%;
+  border-left: 1.5vh solid #ff148e;
+}
+
+.bank-main .component-container .component-input-container .component-group,
+.budget-main .component-container .component-input-container .component-group {
+  padding-top: 2%;
+  padding-left: 1%;
+}
+
+.bank-main .component-container .component-input-container .component-group .component-label,
+.budget-main .component-container .component-input-container .component-group .component-label {
+  color: #797979;
+  font-family: "Signika", "Bahnschrift", sans-serif;
+  font-size: 2vh;
+  font-weight: 400;
+  text-align: left;
+}
+
+.bank-main .component-container .component-input-container .component-group .component-input,
+.budget-main .component-container .component-input-container .component-group .component-input {
+  margin-bottom: 2%;
+  padding: 1%;
+  width: 70%;
+  font-size: 2.5vh;
+}
+
+.bank-main .component-container .component-submit,
+.budget-main .component-container .component-submit {
+  min-height: 5vh;
+  min-width: 7vw;
+  color: white;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 2vh;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2%;
+  background-color: #ff148e;
+  border: none;
+  border-radius: 10px;
+  padding: 0 1vh;
+  text-decoration: none;
+  cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */
