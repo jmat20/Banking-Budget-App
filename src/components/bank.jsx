@@ -254,7 +254,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
     <div className="bank-container">
       <header className="header"></header>
 
-      <section className="bank-body">
+      <section className="body">
         <SideBar1
           setOverviewIsActive={setOverviewIsActive}
           overviewIsActive={overviewIsActive}

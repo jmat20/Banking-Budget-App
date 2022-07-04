@@ -178,7 +178,7 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
     <div className="budget-container">
       <header className="header"></header>
 
-      <section className="bank-body">
+      <section className="body">
         <SideBar2
           setOverviewIsActive={setOverviewIsActive}
           overviewIsActive={overviewIsActive}
@@ -195,93 +195,162 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
           setLogin={setLogin}
         />
 
-        <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
-          <div className="userStatus">
-            <h3>Hi, {user.name}</h3>
-            <p>{user.accountNum}</p>
-            <h4>Balance: Php {user.balance}</h4>
-            <h5>Budget Remaining: Php {remainingBudget}</h5>
+        <div className="budget-main">
+          <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
+            <div className="userStatus">
+              <h3>Hi, {user.name}</h3>
+              <p>{user.accountNum}</p>
+              <h4>Balance: Php {user.balance}</h4>
+              <h5>Budget Remaining: Php {remainingBudget}</h5>
+            </div>
+            <div className="expenses">
+              <ul>
+                {filteredExpenseItems.map((expense) => (
+                  <li key={expense.id}>
+                    <span>Item: {expense.item} </span>
+                    <span>Cost: Php {expense.cost} </span>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(expense.id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="expenses">
-            <ul>
-              {filteredExpenseItems.map((expense) => (
-                <li key={expense.id}>
-                  <span>Item: {expense.item} </span>
-                  <span>Cost: Php {expense.cost} </span>
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(expense.id)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
+
+          <div
+            className={`component-container addExpense ${
+              addIsActive ? "" : "hidden"
+            }`}
+          >
+            <h3 className="component-heading">Add an Expense</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="expense item" className="component-label">
+                  Expense Item:
+                </label>
+                <br />
+                <input
+                  ref={nameRef}
+                  name="expense item"
+                  type="text"
+                  placeholder="Expense Item"
+                  className="component-input"
+                  required
+                />
+              </div>
+
+              <div className="component-group">
+                <label htmlFor="expense cost" className="component-label">
+                  Expense Cost:
+                </label>
+                <br />
+                <input
+                  ref={costRef}
+                  name="expense cost"
+                  type="number"
+                  placeholder="Expense Cost"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              className="component-submit"
+              type="button"
+              onClick={handleAddExpense}
+            >
+              Add Expense
+            </button>
           </div>
-        </div>
 
-        <div className={`addExpense ${addIsActive ? "" : "hidden"}`}>
-          <h3>Add an Expense</h3>
-          <input
-            ref={nameRef}
-            type="text"
-            placeholder="Expense Item"
-            required
-          />
-          <input
-            ref={costRef}
-            type="number"
-            placeholder="Expense Cost"
-            required
-          />
-          <button type="button" onClick={handleAddExpense}>
-            Add Expense
-          </button>
-        </div>
+          <div
+            className={`component-container deposit ${
+              depositIsActive ? "" : "hidden"
+            }`}
+          >
+            <h3 className="component-heading">Deposit Funds</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="deposit" className="component-label">
+                  Deposit Amount:
+                </label>
+                <br />
+                <input
+                  ref={depositAmountRef}
+                  name="deposit"
+                  type="number"
+                  placeholder="Deposit Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              className="component-submit"
+              type="button"
+              onClick={deposit}
+            >
+              Deposit
+            </button>
+          </div>
 
-        <div className={`depost ${depositIsActive ? "" : "hidden"}`}>
-          <h3>Deposit Funds</h3>
-          <input
-            ref={depositAmountRef}
-            type="number"
-            placeholder="Deposit Amount"
-            required
-          />
-          <button type="button" onClick={deposit}>
-            deposit
-          </button>
-        </div>
+          <div
+            className={`component-container withdraw ${
+              withdrawIsActive ? "" : "hidden"
+            }`}
+          >
+            <h3 className="component-heading">Withdraw Funds</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <label htmlFor="withdraw" className="component-label">
+                  Withdraw Amount:
+                </label>
+                <br />
+                <input
+                  ref={withdrawAmountRef}
+                  name="withdraw"
+                  type="number"
+                  placeholder="Withdraw Amount"
+                  className="component-input"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              className="component-submit"
+              type="button"
+              onClick={withdraw}
+            >
+              Withdraw
+            </button>
+          </div>
 
-        <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
-          <h3>Withdraw Funds</h3>
-          <input
-            ref={withdrawAmountRef}
-            type="number"
-            placeholder="Withdraw Amount"
-            required
-          />
-          <button type="button" onClick={withdraw}>
-            Withdraw
-          </button>
-        </div>
-
-        <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
-          <h3>Transfer Funds</h3>
-          <input
-            ref={destinationAccountRef}
-            type="number"
-            placeholder="Transfer to?"
-            required
-          />
-          <input
-            ref={transferAmountRef}
-            type="number"
-            placeholder="Transfer Amount"
-            required
-          />
-          <button type="button" onClick={transfer}>
-            transfer
-          </button>
+          <div
+            className={`component-container transfer ${
+              transferIsActive ? "" : "hidden"
+            }`}
+          >
+            <h3>Transfer Funds</h3>
+            <input
+              ref={destinationAccountRef}
+              type="number"
+              placeholder="Transfer to?"
+              required
+            />
+            <input
+              ref={transferAmountRef}
+              type="number"
+              placeholder="Transfer Amount"
+              required
+            />
+            <button type="button" onClick={transfer}>
+              transfer
+            </button>
+          </div>
         </div>
       </section>
     </div>

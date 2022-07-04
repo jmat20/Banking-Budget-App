@@ -144,13 +144,14 @@
 
 // bank page //
 
-.bank-body {
+.body {
   @include flex-properties(row, flex-start, flex-start);
   @include dimension-properties(88vh, 100vw);
   background-color: $white;
 }
 
-.bank-main {
+.bank-main,
+.budget-main {
   @include dimension-properties(88vh, 70vw);
   @include flex-properties(column, flex-start, flex-start);
 
