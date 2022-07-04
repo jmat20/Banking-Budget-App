@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { SideBar2 } from "./sidebar";
-import "../assets/scss/bank.css";
+import "../assets/scss/styles.css";
+
 let expenseId = 100;
 let expenseArray = [{ id: 1, item: "test", cost: 100, user: "admin" }];
 
@@ -174,98 +175,115 @@ let Budget = ({ user, setUser, users, setUsers, Logout, setLogin }) => {
     transferAmountRef.current.value = "";
   };
   return (
-    <div className="budgetWrapper">
-      <SideBar2
-        setOverviewIsActive={setOverviewIsActive}
-        overviewIsActive={overviewIsActive}
-        setAddIsActive={setAddIsActive}
-        addIsActive={addIsActive}
-        setDepositIsActive={setDepositIsActive}
-        depositIsActive={depositIsActive}
-        setWithdrawIsActive={setWithdrawIsActive}
-        withdrawIsActive={withdrawIsActive}
-        setTransferIsActive={setTransferIsActive}
-        transferIsActive={transferIsActive}
-        Logout={Logout}
-        setUser={setUser}
-        setLogin={setLogin}
-      />
-      <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
-        <div className="userStatus">
-          <h3>Hi, {user.name}</h3>
-          <p>{user.accountNum}</p>
-          <h4>Balance: Php {user.balance}</h4>
-          <h5>Budget Remaining: Php {remainingBudget}</h5>
+    <div className="budget-container">
+      <header className="header"></header>
+
+      <section className="bank-body">
+        <SideBar2
+          setOverviewIsActive={setOverviewIsActive}
+          overviewIsActive={overviewIsActive}
+          setAddIsActive={setAddIsActive}
+          addIsActive={addIsActive}
+          setDepositIsActive={setDepositIsActive}
+          depositIsActive={depositIsActive}
+          setWithdrawIsActive={setWithdrawIsActive}
+          withdrawIsActive={withdrawIsActive}
+          setTransferIsActive={setTransferIsActive}
+          transferIsActive={transferIsActive}
+          Logout={Logout}
+          setUser={setUser}
+          setLogin={setLogin}
+        />
+
+        <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
+          <div className="userStatus">
+            <h3>Hi, {user.name}</h3>
+            <p>{user.accountNum}</p>
+            <h4>Balance: Php {user.balance}</h4>
+            <h5>Budget Remaining: Php {remainingBudget}</h5>
+          </div>
+          <div className="expenses">
+            <ul>
+              {filteredExpenseItems.map((expense) => (
+                <li key={expense.id}>
+                  <span>Item: {expense.item} </span>
+                  <span>Cost: Php {expense.cost} </span>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(expense.id)}
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="expenses">
-          <ul>
-            {filteredExpenseItems.map((expense) => (
-              <li key={expense.id}>
-                <span>Item: {expense.item} </span>
-                <span>Cost: Php {expense.cost} </span>
-                <button type="button" onClick={() => handleDelete(expense.id)}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
+
+        <div className={`addExpense ${addIsActive ? "" : "hidden"}`}>
+          <h3>Add an Expense</h3>
+          <input
+            ref={nameRef}
+            type="text"
+            placeholder="Expense Item"
+            required
+          />
+          <input
+            ref={costRef}
+            type="number"
+            placeholder="Expense Cost"
+            required
+          />
+          <button type="button" onClick={handleAddExpense}>
+            Add Expense
+          </button>
         </div>
-      </div>
-      <div className={`addExpense ${addIsActive ? "" : "hidden"}`}>
-        <h3>Add an Expense</h3>
-        <input ref={nameRef} type="text" placeholder="Expense Item" required />
-        <input
-          ref={costRef}
-          type="number"
-          placeholder="Expense Cost"
-          required
-        />
-        <button type="button" onClick={handleAddExpense}>
-          Add Expense
-        </button>
-      </div>
-      <div className={`depost ${depositIsActive ? "" : "hidden"}`}>
-        <h3>Deposit Funds</h3>
-        <input
-          ref={depositAmountRef}
-          type="number"
-          placeholder="Deposit Amount"
-          required
-        />
-        <button type="button" onClick={deposit}>
-          deposit
-        </button>
-      </div>
-      <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
-        <h3>Withdraw Funds</h3>
-        <input
-          ref={withdrawAmountRef}
-          type="number"
-          placeholder="Withdraw Amount"
-          required
-        />
-        <button type="button" onClick={withdraw}>
-          Withdraw
-        </button>
-      </div>
-      <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
-        <h3>Transfer Funds</h3>
-        <input
-          ref={destinationAccountRef}
-          type="number"
-          placeholder="Transfer to?"
-          required
-        />
-        <input
-          ref={transferAmountRef}
-          type="number"
-          placeholder="Transfer Amount"
-          required
-        />
-        <button type="button" onClick={transfer}>
-          transfer
-        </button>
-      </div>
+
+        <div className={`depost ${depositIsActive ? "" : "hidden"}`}>
+          <h3>Deposit Funds</h3>
+          <input
+            ref={depositAmountRef}
+            type="number"
+            placeholder="Deposit Amount"
+            required
+          />
+          <button type="button" onClick={deposit}>
+            deposit
+          </button>
+        </div>
+
+        <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
+          <h3>Withdraw Funds</h3>
+          <input
+            ref={withdrawAmountRef}
+            type="number"
+            placeholder="Withdraw Amount"
+            required
+          />
+          <button type="button" onClick={withdraw}>
+            Withdraw
+          </button>
+        </div>
+
+        <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
+          <h3>Transfer Funds</h3>
+          <input
+            ref={destinationAccountRef}
+            type="number"
+            placeholder="Transfer to?"
+            required
+          />
+          <input
+            ref={transferAmountRef}
+            type="number"
+            placeholder="Transfer Amount"
+            required
+          />
+          <button type="button" onClick={transfer}>
+            transfer
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

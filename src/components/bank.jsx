@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import "../assets/scss/bank.css";
+import "../assets/scss/styles.css";
 import { SideBar1 } from "./sidebar";
+
 export let bankData = [
   {
     accountNum: 1,
@@ -250,141 +251,159 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
   };
 
   return (
-    <div className="bank">
-      <SideBar1
-        setOverviewIsActive={setOverviewIsActive}
-        overviewIsActive={overviewIsActive}
-        setAddIsActive={setAddIsActive}
-        addIsActive={addIsActive}
-        setDepositIsActive={setDepositIsActive}
-        depositIsActive={depositIsActive}
-        setWithdrawIsActive={setWithdrawIsActive}
-        withdrawIsActive={withdrawIsActive}
-        setTransferIsActive={setTransferIsActive}
-        transferIsActive={transferIsActive}
-        Logout={Logout}
-        setUser={setUser}
-        setLogin={setLogin}
-      />
+    <div className="bank-container">
+      <header className="header"></header>
 
-      <div className={`addUser ${addIsActive ? "" : "hidden"}`}>
-        <h3>Create Account</h3>
-        <input ref={nameRef} type="text" placeholder="Account Name" required />
-        <input
-          ref={balRef}
-          type="number"
-          placeholder="Initial Balance"
-          required
+      <section className="bank-body">
+        <SideBar1
+          setOverviewIsActive={setOverviewIsActive}
+          overviewIsActive={overviewIsActive}
+          setAddIsActive={setAddIsActive}
+          addIsActive={addIsActive}
+          setDepositIsActive={setDepositIsActive}
+          depositIsActive={depositIsActive}
+          setWithdrawIsActive={setWithdrawIsActive}
+          withdrawIsActive={withdrawIsActive}
+          setTransferIsActive={setTransferIsActive}
+          transferIsActive={transferIsActive}
+          Logout={Logout}
+          setUser={setUser}
+          setLogin={setLogin}
         />
-        <input
-          ref={usernameRef}
-          type="text"
-          placeholder="Login Username"
-          required
-        />
-        <input
-          ref={passwordRef}
-          type="text"
-          placeholder="Account Password"
-          required
-        />
-        <button type="button" onClick={handleAdd}>
-          Add
-        </button>
-      </div>
 
-      <div className={`depost ${depositIsActive ? "" : "hidden"}`}>
-        <h3>Deposit Funds</h3>
-        <input
-          ref={depositRef}
-          type="number"
-          placeholder="Account Number"
-          required
-        />
-        <input
-          ref={depositAmountRef}
-          type="number"
-          placeholder="Deposit Amount"
-          required
-        />
-        <button type="button" onClick={deposit}>
-          deposit
-        </button>
-      </div>
-      <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
-        <h3>Withdraw Funds</h3>
-        <input
-          ref={withdrawRef}
-          type="number"
-          placeholder="Account Number"
-          required
-        />
-        <input
-          ref={withdrawAmountRef}
-          type="number"
-          placeholder="Withdraw Amount"
-          required
-        />
-        <button type="button" onClick={withdraw}>
-          withdraw
-        </button>
-      </div>
-      <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
-        <h3>Transfer Funds</h3>
-        <input
-          ref={sourceAccountRef}
-          type="number"
-          placeholder="Transfer from?"
-          required
-        />
-        <input
-          ref={destinationAccountRef}
-          type="number"
-          placeholder="Transfer to?"
-          required
-        />
-        <input
-          ref={transferAmountRef}
-          type="number"
-          placeholder="Transfer Amount"
-          required
-        />
-        <button type="button" onClick={transfer}>
-          transfer
-        </button>
-      </div>
-      <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
-        <h3>Admin Overview</h3>
-        <input
-          ref={nameSearchRef}
-          type="text"
-          placeholder="Account Name Search"
-          onChange={handleSearch}
-        />
-        <ul>
-          {filteredUsers.map((user) => (
-            <li key={user.accountNum}>
-              <span>Account: {user.accountNum} </span>
-              <span>Name: {user.name} </span>
-              <span>Balance: {user.balance} </span>
-              <span>Username: {user.username} </span>
-              <button type="button" onClick={() => handleEdit(user.username)}>
-                Edit
-              </button>
-              {userPriveledge(user)}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={`editUser ${editIsActive ? "" : "hidden"}`}>
-        <h5>Edit Account</h5>
-        <input ref={editNameRef} type="text" />
-        <input ref={editUserNameRef} type="text" />
-        <input ref={editPasswordRef} type="text" />
-        <button type="button" onClick={() => handleSave()}>
-          Save
-        </button>
-      </div>
+        <div className="bank-main">
+          <div className={`addUser ${addIsActive ? "" : "hidden"}`}>
+            <h3>Create Account</h3>
+            <input
+              ref={nameRef}
+              type="text"
+              placeholder="Account Name"
+              required
+            />
+            <input
+              ref={balRef}
+              type="number"
+              placeholder="Initial Balance"
+              required
+            />
+            <input
+              ref={usernameRef}
+              type="text"
+              placeholder="Login Username"
+              required
+            />
+            <input
+              ref={passwordRef}
+              type="text"
+              placeholder="Account Password"
+              required
+            />
+            <button type="button" onClick={handleAdd}>
+              Add
+            </button>
+          </div>
+
+          <div className={`deposit ${depositIsActive ? "" : "hidden"}`}>
+            <h3>Deposit Funds</h3>
+            <input
+              ref={depositRef}
+              type="number"
+              placeholder="Account Number"
+              required
+            />
+            <input
+              ref={depositAmountRef}
+              type="number"
+              placeholder="Deposit Amount"
+              required
+            />
+            <button type="button" onClick={deposit}>
+              deposit
+            </button>
+          </div>
+
+          <div className={`withdraw ${withdrawIsActive ? "" : "hidden"}`}>
+            <h3>Withdraw Funds</h3>
+            <input
+              ref={withdrawRef}
+              type="number"
+              placeholder="Account Number"
+              required
+            />
+            <input
+              ref={withdrawAmountRef}
+              type="number"
+              placeholder="Withdraw Amount"
+              required
+            />
+            <button type="button" onClick={withdraw}>
+              withdraw
+            </button>
+          </div>
+
+          <div className={`transfer ${transferIsActive ? "" : "hidden"}`}>
+            <h3>Transfer Funds</h3>
+            <input
+              ref={sourceAccountRef}
+              type="number"
+              placeholder="Transfer from?"
+              required
+            />
+            <input
+              ref={destinationAccountRef}
+              type="number"
+              placeholder="Transfer to?"
+              required
+            />
+            <input
+              ref={transferAmountRef}
+              type="number"
+              placeholder="Transfer Amount"
+              required
+            />
+            <button type="button" onClick={transfer}>
+              transfer
+            </button>
+          </div>
+
+          <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
+            <h3>Admin Overview</h3>
+            <input
+              ref={nameSearchRef}
+              type="text"
+              placeholder="Account Name Search"
+              onChange={handleSearch}
+            />
+            <ul>
+              {filteredUsers.map((user) => (
+                <li key={user.accountNum}>
+                  <span>Account: {user.accountNum} </span>
+                  <span>Name: {user.name} </span>
+                  <span>Balance: {user.balance} </span>
+                  <span>Username: {user.username} </span>
+                  <button
+                    type="button"
+                    onClick={() => handleEdit(user.username)}
+                  >
+                    Edit
+                  </button>
+                  {userPriveledge(user)}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={`editUser ${editIsActive ? "" : "hidden"}`}>
+            <h5>Edit Account</h5>
+            <input ref={editNameRef} type="text" />
+            <input ref={editUserNameRef} type="text" />
+            <input ref={editPasswordRef} type="text" />
+            <button type="button" onClick={() => handleSave()}>
+              Save
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

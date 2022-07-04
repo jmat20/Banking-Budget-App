@@ -11,7 +11,68 @@
           box-sizing: border-box;
 }
 
-.loginpage-container {
+input[type="text"],
+input[type="password"] {
+  background: none;
+  outline: none;
+  border-style: none;
+  border-bottom: 2px solid #797979;
+  color: #797979;
+  font-family: "Signika", "Bahnschrift", sans-serif;
+  font-weight: 300;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:hover,
+input[type="text"]:active,
+input[type="text"]:focus,
+input[type="password"]:hover,
+input[type="password"]:active,
+input[type="password"]:focus {
+  border-color: #08b8cc;
+}
+
+.sidebar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  min-height: 88vh;
+  min-width: 20vw;
+  background-color: #08b8cc;
+  z-index: 5;
+}
+
+.sidebar-container .sidebar-item {
+  color: white;
+  font-family: "Signika", "Bahnschrift", sans-serif;
+  font-size: 3vh;
+  font-weight: 400;
+  text-align: left;
+  width: 100%;
+  padding: 5% 7%;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.sidebar-container .sidebar-item:hover {
+  background-color: #0ea1b2;
+}
+
+.loginpage-container,
+.bank-container,
+.budget-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,9 +106,10 @@
   min-height: 12vh;
   min-width: 100vw;
   background-color: white;
-  border-top: 1.5vh solid #0fa3b3;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-top: 1.5vh solid #08b8cc;
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
 
 .body-container {
@@ -94,22 +156,6 @@
 .body-container .form-container .form-group {
   margin-left: 7%;
   margin-bottom: 3%;
-  /*input[type="text"] {
-        background: none;
-        outline: none;
-        border-style: none;
-        border-bottom: 2px solid $grey;
-
-        @include font-properties(white, $cabin, $weight: 400);
-
-        transition: 0.2s ease;
-      }
-
-      input[type="text"]:hover,
-      input[type="text"]:active,
-      input[type="text"]:focus {
-        border-color: white;
-      }*/
 }
 
 .body-container .form-container .form-group .form-label {
@@ -118,5 +164,94 @@
   font-size: 2vh;
   font-weight: 400;
   text-align: left;
+}
+
+.body-container .form-container .form-group .form-input {
+  margin-top: 1%;
+  padding: 2%;
+  width: 90%;
+  font-size: 2.5vh;
+}
+
+.body-container .form-container .form-submit {
+  min-height: 5vh;
+  min-width: 7vw;
+  color: white;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 2vh;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 7%;
+  background-color: #ff148e;
+  border: none;
+  border-radius: 10px;
+  padding: 0 1vh;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.body-container .form-container .form-register {
+  width: 20vw;
+  margin-left: 7%;
+  word-wrap: break-word;
+}
+
+.body-container .form-container .form-register p {
+  color: #08b8cc;
+  font-family: "Signika", "Bahnschrift", sans-serif;
+  font-size: 2vh;
+  font-weight: 400;
+  text-align: left;
+  margin-top: 5%;
+}
+
+.body-container .form-container .form-register .error {
+  color: #ff148e;
+  font-size: 2.5vh;
+  margin-top: 5%;
+}
+
+.body-container .intro-container {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  width: 50%;
+}
+
+.body-container .intro-container h1 {
+  color: #08b8cc;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 5vh;
+  font-weight: 700;
+  text-align: left;
+}
+
+.body-container .intro-container p {
+  color: white;
+  font-family: "Signika", "Bahnschrift", sans-serif;
+  font-size: 3vh;
+  font-weight: 400;
+  text-align: left;
+}
+
+.bank-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 88vh;
+  min-width: 100vw;
+  background-color: #ececec;
 }
 /*# sourceMappingURL=styles.css.map */
