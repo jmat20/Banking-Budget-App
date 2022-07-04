@@ -70,6 +70,10 @@ input[type="password"]:focus {
   background-color: #0ea1b2;
 }
 
+.hidden {
+  display: none;
+}
+
 .loginpage-container,
 .bank-container,
 .budget-container {
