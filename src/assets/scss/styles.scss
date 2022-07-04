@@ -151,14 +151,14 @@
 }
 
 .bank-main {
+  @include dimension-properties(88vh, 70vw);
   @include flex-properties(column, flex-start, flex-start);
-  overflow-x: hidden;
-  overflow-y: auto;
 
   .component-container {
-    @include dimension-properties(100%, 70vw);
-    margin-top: 3%;
+    @include dimension-properties(100%, 100%);
+    margin-top: 1%;
     margin-left: 7%;
+    overflow-x: hidden;
 
     .component-heading {
       @include font-properties(
@@ -168,6 +168,7 @@
         $weight: 900,
         $align: left
       );
+      margin-top: 2%;
     }
 
     .component-input-container {

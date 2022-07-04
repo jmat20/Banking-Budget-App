@@ -533,72 +533,83 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
               </div>
             </div>
 
-            <ul>
-              {filteredUsers.map((user) => (
-                <li key={user.accountNum}>
-                  <span>Account: {user.accountNum} </span>
-                  <span>Name: {user.name} </span>
-                  <span>Balance: {user.balance} </span>
-                  <span>Username: {user.username} </span>
-                  <button
-                    type="button"
-                    onClick={() => handleEdit(user.username)}
-                  >
-                    Edit
-                  </button>
-                  {userPriveledge(user)}
-                </li>
-              ))}
-            </ul>
-          </div>
+            <h3 className="component-heading">List of Accounts</h3>
+            <div className="component-input-container">
+              <ul>
+                {filteredUsers.map((user) => (
+                  <li key={user.accountNum}>
+                    <span>Account: {user.accountNum} </span>
+                    <span></span>
+                    <span>Name: {user.name} </span>
+                    <span></span>
+                    <span>Balance: {user.balance} </span>
+                    <span></span>
+                    <span>Username: {user.username} </span>
+                    <span></span>
+                    <button
+                      type="button"
+                      onClick={() => handleEdit(user.username)}
+                    >
+                      Edit
+                    </button>
+                    {userPriveledge(user)}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div
-            className={` 
-            component-container
+            <div
+              className={` 
+            
             editUser 
             ${editIsActive ? "" : "hidden"}
             `}
-          >
-            <h5 className="component-heading">Edit Account</h5>
-            <div className="component-input-container">
-              <div className="component-group">
-                <label htmlFor="edit name" className="component-label">
-                  Edit Name:
-                </label>
-                <br />
-                <input
-                  ref={editNameRef}
-                  name="edit name"
-                  type="text"
-                  className="component-input"
-                />
-              </div>
+            >
+              <h5 className="component-heading">Edit Account</h5>
+              <div className="component-input-container">
+                <div className="component-group">
+                  <label htmlFor="edit name" className="component-label">
+                    Edit Name:
+                  </label>
+                  <br />
+                  <input
+                    ref={editNameRef}
+                    name="edit name"
+                    type="text"
+                    className="component-input"
+                  />
+                </div>
 
-              <div className="component-group">
-                <label htmlFor="edit username" className="component-label">
-                  Edit Username:
-                </label>
-                <br />
-                <input
-                  ref={editUserNameRef}
-                  name="edit username"
-                  type="text"
-                  className="component-input"
-                />
-              </div>
+                <div className="component-group">
+                  <label htmlFor="edit username" className="component-label">
+                    Edit Username:
+                  </label>
+                  <br />
+                  <input
+                    ref={editUserNameRef}
+                    name="edit username"
+                    type="text"
+                    className="component-input"
+                  />
+                </div>
 
-              <div className="component-group">
-                <label htmlFor="edit username" className="component-label">
-                  Edit Password:
-                </label>
-                <br />
-                <input
-                  ref={editPasswordRef}
-                  type="password"
-                  className="component-input"
-                />
+                <div className="component-group">
+                  <label htmlFor="edit username" className="component-label">
+                    Edit Password:
+                  </label>
+                  <br />
+                  <input
+                    ref={editPasswordRef}
+                    type="password"
+                    className="component-input"
+                  />
+                </div>
               </div>
-              <button type="button" onClick={() => handleSave()}>
+              <button
+                className="component-submit"
+                type="button"
+                onClick={() => handleSave()}
+              >
                 Save
               </button>
             </div>
