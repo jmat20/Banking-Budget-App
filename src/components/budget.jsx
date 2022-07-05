@@ -364,7 +364,7 @@ let Budget = ({
               transferIsActive ? "" : "hidden"
             }`}
           >
-            <h3>Transfer Funds</h3>
+            <h3 className="component-heading">Transfer Funds</h3>
             <div className="component-input-container">
               <div className="component-group">
                 <label htmlFor="destination" className="component-label">
