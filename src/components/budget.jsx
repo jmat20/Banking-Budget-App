@@ -227,7 +227,7 @@ let Budget = ({
             </div>
 
             <h3 className="component-heading">List of Expenses</h3>
-            <div className="component-input-container">
+            <div className="component-input-container too-long">
               <ul className="component-list">
                 {filteredExpenseItems.map((expense) => (
                   <li className="component-item" key={expense.id}>

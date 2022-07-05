@@ -282,7 +282,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
             `}
           >
             <h3 className="component-heading">Create Account</h3>
-            <div className="component-input-container">
+            <div className="component-input-container ">
               <div className="component-group">
                 <label htmlFor="name" className="component-label">
                   Account Name:
@@ -519,7 +519,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
             `}
           >
             <h3 className="component-heading">Admin Overview</h3>
-            <div className="component-input-container">
+            <div className="component-input-container too-long">
               <div className="component-group">
                 <label htmlFor="account search" className="component-label">
                   Account Search:
@@ -537,7 +537,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
             </div>
 
             <h3 className="component-heading">List of Accounts</h3>
-            <div className="component-input-container">
+            <div className="component-input-container too-long">
               <ul className="component-list">
                 {filteredUsers.map((user) => (
                   <li className="component-item" key={user.accountNum}>
@@ -581,7 +581,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
             `}
             >
               <h5 className="component-heading">Edit Account</h5>
-              <div className="component-input-container">
+              <div className="component-input-container too-long">
                 <div className="component-group">
                   <label htmlFor="edit name" className="component-label">
                     Edit Name:

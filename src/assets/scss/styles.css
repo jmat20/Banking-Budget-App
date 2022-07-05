@@ -313,13 +313,17 @@ input::-webkit-inner-spin-button {
 
 .bank-main .component-container .component-input-container,
 .budget-main .component-container .component-input-container {
-  max-height: 15vh;
   background-color: white;
   margin-top: 1%;
   border-left: 1.5vh solid #ff148e;
   padding-top: 2%;
   padding-left: 1%;
   padding-bottom: 2%;
+}
+
+.bank-main .component-container .component-input-container.too-long,
+.budget-main .component-container .component-input-container.too-long {
+  max-height: 15vh;
   overflow-y: scroll;
 }
 

@@ -173,7 +173,6 @@
     }
 
     .component-input-container {
-      max-height: 15vh;
       background-color: white;
       margin-top: 1%;
       border-left: 1.5vh solid $pink;
@@ -182,7 +181,10 @@
       padding-left: 1%;
       padding-bottom: 2%;
 
-      overflow-y: scroll;
+      &.too-long {
+        max-height: 15vh;
+        overflow-y: scroll;
+      }
 
       .component-group {
         .component-label {
