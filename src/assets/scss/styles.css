@@ -296,6 +296,9 @@ input::-webkit-inner-spin-button {
   margin-top: 1%;
   margin-left: 7%;
   overflow-x: hidden;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
 }
 
 .bank-main .component-container .component-heading,
@@ -310,14 +313,14 @@ input::-webkit-inner-spin-button {
 
 .bank-main .component-container .component-input-container,
 .budget-main .component-container .component-input-container {
-  min-height: 100%;
-  min-width: 70vw;
+  max-height: 15vh;
   background-color: white;
   margin-top: 1%;
   border-left: 1.5vh solid #ff148e;
   padding-top: 2%;
   padding-left: 1%;
   padding-bottom: 2%;
+  overflow-y: scroll;
 }
 
 .bank-main .component-container .component-input-container .component-group .component-label,
@@ -416,6 +419,26 @@ input::-webkit-inner-spin-button {
   padding: 0 1vh;
   text-decoration: none;
   cursor: pointer;
+}
+
+.bank-main .component-container .component-input-container::-webkit-scrollbar,
+.budget-main .component-container .component-input-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.bank-main .component-container .component-input-container::-webkit-scrollbar-track,
+.budget-main .component-container .component-input-container::-webkit-scrollbar-track {
+  background: white;
+}
+
+.bank-main .component-container .component-input-container::-webkit-scrollbar-thumb,
+.budget-main .component-container .component-input-container::-webkit-scrollbar-thumb {
+  background: #08b8cc;
+}
+
+.bank-main .component-container .component-input-container::-webkit-scrollbar-thumb:hover,
+.budget-main .component-container .component-input-container::-webkit-scrollbar-thumb:hover {
+  background: #0ea1b2;
 }
 
 .bank-main .component-container .component-submit,
