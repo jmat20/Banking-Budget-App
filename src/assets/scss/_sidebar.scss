@@ -1,0 +1,28 @@
+.sidebar-container {
+  @include flex-properties(column, flex-start, flex-start);
+  @include dimension-properties(88vh, 20vw);
+  background-color: $blue;
+  z-index: 5;
+
+  .sidebar-item {
+    @include font-properties(
+      $color: white,
+      $family: $body-font,
+      $size: $h3,
+      $weight: 400,
+      $align: left
+    );
+    width: 100%;
+    padding: 5% 7%;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .sidebar-item:hover {
+    background-color: $dark-blue;
+  }
+}
+
+.hidden {
+  display: none;
+}
