@@ -205,21 +205,42 @@ let Budget = ({
         />
 
         <div className="budget-main">
-          <div className={`overview ${overviewIsActive ? "" : "hidden"}`}>
-            <div className="userStatus">
-              <h3>Hi, {user.name}</h3>
-              <p>{user.accountNum}</p>
-              <h4>Balance: Php {user.balance}</h4>
-              <h5>Budget Remaining: Php {remainingBudget}</h5>
+          <div
+            className={`component-container overview ${
+              overviewIsActive ? "" : "hidden"
+            }`}
+          >
+            <h3 className="component-heading">Hi, {user.name}</h3>
+            <div className="component-input-container">
+              <div className="component-group">
+                <h4 className="component-balance">
+                  Balance: PHP {user.balance}
+                </h4>
+                <label htmlFor="account number" className="component-label">
+                  Account Number: {user.accountNum}
+                </label>
+                <br />
+                <label htmlFor="account number" className="component-label">
+                  Budget Remaining: PHP {remainingBudget}
+                </label>
+              </div>
             </div>
-            <div className="expenses">
-              <ul>
+
+            <h3 className="component-heading">List of Expenses</h3>
+            <div className="component-input-container">
+              <ul className="component-list">
                 {filteredExpenseItems.map((expense) => (
-                  <li key={expense.id}>
-                    <span>Item: {expense.item} </span>
-                    <span>Cost: Php {expense.cost} </span>
+                  <li className="component-item" key={expense.id}>
+                    <span className="item-type">
+                      Item: <span className="item-value">{expense.item}</span>
+                    </span>
+                    <span className="item-type">
+                      Cost:{" "}
+                      <span className="item-value">PHP {expense.cost} </span>
+                    </span>
                     <button
                       type="button"
+                      className="component-button"
                       onClick={() => handleDelete(expense.id)}
                     >
                       Delete

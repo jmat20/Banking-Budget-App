@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../assets/scss/bank.css";
+import "../assets/scss/styles.css";
 import { SideBar1 } from "./sidebar";
 export let bankData = [
   {
@@ -195,7 +195,11 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
   let userPriveledge = (user) => {
     if (user.type === "customer") {
       return (
-        <button type="button" onClick={() => handleDelete(user.username)}>
+        <button
+          className="component-button"
+          type="button"
+          onClick={() => handleDelete(user.username)}
+        >
           Delete
         </button>
       );
@@ -250,23 +254,8 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
   };
 
   return (
-    <div className="bank">
-      <SideBar1
-        setOverviewIsActive={setOverviewIsActive}
-        overviewIsActive={overviewIsActive}
-        setAddIsActive={setAddIsActive}
-        addIsActive={addIsActive}
-        setDepositIsActive={setDepositIsActive}
-        depositIsActive={depositIsActive}
-        setWithdrawIsActive={setWithdrawIsActive}
-        withdrawIsActive={withdrawIsActive}
-        setTransferIsActive={setTransferIsActive}
-        transferIsActive={transferIsActive}
-        Logout={Logout}
-        setUser={setUser}
-        setLogin={setLogin}
-      />
-
+    <div className="bank-container">
+      <header className="header"></header>
 
       <section className="body">
         <SideBar1
@@ -284,23 +273,6 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
           setUser={setUser}
           setLogin={setLogin}
         />
-        <input
-          ref={usernameRef}
-          type="text"
-          placeholder="Login Username"
-          required
-        />
-        <input
-          ref={passwordRef}
-          type="text"
-          placeholder="Account Password"
-          required
-        />
-        <button type="button" onClick={handleAdd}>
-          Add
-        </button>
-      </div>
-
 
         <div className="bank-main">
           <div
@@ -566,19 +538,31 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
 
             <h3 className="component-heading">List of Accounts</h3>
             <div className="component-input-container">
-              <ul>
+              <ul className="component-list">
                 {filteredUsers.map((user) => (
-                  <li key={user.accountNum}>
-                    <span>Account: {user.accountNum} </span>
-                    <span></span>
-                    <span>Name: {user.name} </span>
-                    <span></span>
-                    <span>Balance: {user.balance} </span>
-                    <span></span>
-                    <span>Username: {user.username} </span>
-                    <span></span>
+                  <li className="component-item" key={user.accountNum}>
+                    <span className="item-type">
+                      Account:{" "}
+                      <span className="item-value">{user.accountNum}</span>
+                    </span>
+
+                    <span className="item-type">
+                      Name: <span className="item-value">{user.name}</span>
+                    </span>
+
+                    <span className="item-type">
+                      Balance:{" "}
+                      <span className="item-value">{user.balance}</span>
+                    </span>
+
+                    <span className="item-type">
+                      Username:{" "}
+                      <span className="item-value">{user.username}</span>
+                    </span>
+
                     <button
                       type="button"
+                      className="component-button"
                       onClick={() => handleEdit(user.username)}
                     >
                       Edit
@@ -647,7 +631,6 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

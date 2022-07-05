@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import LogInForm from "./components/login-form";
 import Bank from "./components/bank";
 import Budget from "./components/budget";
-import { SideBar1 } from "./components/sidebar";
 import { bankData } from "./components/bank";
 import { expenseArray } from "./components/budget";
+import "./assets/scss/styles.css";
 
 function App() {
   const [user, setUser] = useState({});
@@ -54,7 +54,9 @@ function App() {
       {login === false && (
         <div>
           <LogInForm Login={Login} error={error} />{" "}
-          <button onClick={() => loadData()}>Load Data</button>
+          <button className="load-data" onClick={() => loadData()}>
+            Load Data
+          </button>
         </div>
       )}
       {user.type === "admin" && (
