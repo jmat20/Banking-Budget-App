@@ -178,10 +178,11 @@
       margin-top: 1%;
       border-left: 1.5vh solid $pink;
 
-      .component-group {
-        padding-top: 2%;
-        padding-left: 1%;
+      padding-top: 2%;
+      padding-left: 1%;
+      padding-bottom: 2%;
 
+      .component-group {
         .component-label {
           @include font-properties(
             $color: $grey,
@@ -199,6 +200,63 @@
           font-size: $h4;
         }
       }
+
+      .component-balance {
+        @include font-properties(
+          $color: $blue,
+          $family: $heading-font,
+          $size: $h2,
+          $weight: 700,
+          $align: left
+        );
+      }
+
+      .component-list {
+        @include flex-properties(column, flex-start, flex-start);
+
+        .component-item {
+          @include dimension-properties(100%, 60vw);
+          @include flex-properties(row, space-between, center);
+          padding: 3px;
+
+          .item-type {
+            @include font-properties(
+              $color: $blue,
+              $family: $heading-font,
+              $size: $p,
+              $weight: 700,
+              $align: left
+            );
+          }
+
+          .item-value {
+            @include font-properties(
+              $color: $grey,
+              $family: $body-font,
+              $size: $p,
+              $weight: 400,
+              $align: left
+            );
+          }
+        }
+
+        .component-button {
+          @include dimension-properties(3vh, 5vw);
+          @include font-properties(
+            $color: white,
+            $family: $heading-font,
+            $size: $p,
+            $weight: 700,
+            $align: center
+          );
+          background-color: $pink;
+          border: none;
+          border-radius: 10px;
+          padding: 0 1vh;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
     }
 
     .component-submit {
@@ -210,6 +268,7 @@
         $weight: 700,
         $align: center
       );
+
       margin-top: 2%;
       background-color: $pink;
       border: none;
@@ -222,3 +281,22 @@
 }
 
 // components //
+
+.load-data {
+  margin-top: 1.3%;
+  margin-left: 1%;
+  @include dimension-properties(3vh, 5vw);
+  @include font-properties(
+    $color: white,
+    $family: $heading-font,
+    $size: $p,
+    $weight: 700,
+    $align: center
+  );
+  background-color: $blue;
+  border: none;
+  border-radius: 10px;
+  padding: 0 1vh;
+  text-decoration: none;
+  cursor: pointer;
+}
