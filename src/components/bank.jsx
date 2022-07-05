@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import "../assets/scss/bank.css";
+import "../assets/scss/styles.css";
 import { SideBar1 } from "./sidebar";
+
 export let bankData = [
   {
     accountNum: 1,
@@ -61,14 +62,14 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
         usernameRef.current.value,
         passwordRef.current.value
       );
-      window.alert("Account Successfuly Created.");
+      console.log("added");
       setUsers((state) => {
         const newState = [...state, bankData[bankData.length - 1]];
         return [...newState];
       });
       clearInputs();
     } else {
-      window.alert("Username already exists!");
+      console.log("Username already exists");
     }
   }
 
@@ -83,7 +84,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
       depositAccount.balance =
         parseInt(depositAccount.balance) +
         parseInt(depositAmountRef.current.value);
-      window.alert("Deposit Success.");
+      console.log("deposit success");
       console.log(bankData);
       setUsers((state) => {
         const newState = state;
@@ -92,7 +93,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
       });
       clearInputs();
     } else {
-      window.alert("Transaction Failed. Please re-check account details.");
+      console.log("Transaction Failed. Please re-check account details.");
       return;
     }
   };
@@ -107,17 +108,17 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
         withdrawAccount.balance =
           parseInt(withdrawAccount.balance) -
           parseInt(withdrawAmountRef.current.value);
-        window.alert("Withdrawal Success.");
+        console.log("withdraw success");
         setUsers((state) => {
           const newState = state;
           newState[withdrawAccountIdx] = withdrawAccount;
           return [...newState];
         });
       } else {
-        window.alert("Not enough balance.");
+        console.log("Not enough balance.");
       }
     } else {
-      window.alert("Transaction Failed. Please re-check account details.");
+      console.log("Transaction Failed. Please re-check account details.");
       return;
     }
     clearInputs();
@@ -139,7 +140,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
         destination.balance =
           parseInt(destination.balance) +
           parseInt(transferAmountRef.current.value);
-        window.alert("Fund Transfer Success.");
+        console.log("transfer success");
         setUsers((state) => {
           const newState = state;
           newState[sourceIdx] = source;
@@ -147,10 +148,10 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
           return [...newState];
         });
       } else {
-        window.alert("Not enough balance.");
+        console.log("Not enough balance.");
       }
     } else {
-      window.alert("Transaction Failed. Please re-check account details.");
+      console.log("Transaction Failed. Please re-check account details.");
       return;
     }
     clearInputs();
@@ -172,6 +173,7 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
   };
 
   let addUser = (name, balance, username, password) => {
+    console.log(name);
     let newUser = new User(name, balance, username, password);
     console.log(newUser);
     bankData = [...bankData, newUser];
@@ -246,27 +248,11 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
     editPasswordRef.current.value = "";
     editAccount = "";
     setEditIsActive(false);
-    window.alert("Changes Saved.");
   };
 
   return (
-    <div className="bank">
-      <SideBar1
-        setOverviewIsActive={setOverviewIsActive}
-        overviewIsActive={overviewIsActive}
-        setAddIsActive={setAddIsActive}
-        addIsActive={addIsActive}
-        setDepositIsActive={setDepositIsActive}
-        depositIsActive={depositIsActive}
-        setWithdrawIsActive={setWithdrawIsActive}
-        withdrawIsActive={withdrawIsActive}
-        setTransferIsActive={setTransferIsActive}
-        transferIsActive={transferIsActive}
-        Logout={Logout}
-        setUser={setUser}
-        setLogin={setLogin}
-      />
-
+    <div className="bank-container">
+      <header className="header"></header>
 
       <section className="body">
         <SideBar1
@@ -284,23 +270,6 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
           setUser={setUser}
           setLogin={setLogin}
         />
-        <input
-          ref={usernameRef}
-          type="text"
-          placeholder="Login Username"
-          required
-        />
-        <input
-          ref={passwordRef}
-          type="text"
-          placeholder="Account Password"
-          required
-        />
-        <button type="button" onClick={handleAdd}>
-          Add
-        </button>
-      </div>
-
 
         <div className="bank-main">
           <div
@@ -647,7 +616,6 @@ function Bank({ users, setUsers, Logout, setUser, setLogin }) {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
